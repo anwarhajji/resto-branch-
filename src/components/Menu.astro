@@ -7,21 +7,21 @@ const plates = await getCollection("plates");
 const siteLangFormat = siteLang.replace("_", "-");
 ---
 
-<!-- Quick Nav -->
+<!-- Quick Nav --><!-- Quick Nav -->
 <div class="mb-20 sticky top-8 z-10">
   <nav
     class="custom-bg-light-brown text-brown rounded-full max-w-5xl mx-auto swiper-plates w-full flex items-center gap-4 justify-center overflow-hidden"
   >
     <ul
       id="plate-nav"
-      class="px-6 py-3 swiper-wrapper h-auto w-auto flex gap-4 sm:justify-center overflow-x-auto whitespace-nowrap"
+      class="px-6 py-3 swiper-wrapper h-auto w-auto flex gap-4 sm:justify-center overflow-x-auto"
     >
       {
         plates.map((plate) => (
           <li class="swiper-slide !w-max min-w-fit flex-shrink-0">
             <a
               href={`#${plate.data.slug}`}
-              class="font-medium select-none whitespace-normal overflow-visible max-w-[150px] text-sm md:text-base"
+              class="font-medium select-none whitespace-nowrap overflow-visible text-sm md:text-base"
             >
               {plate.data.prettyName}
             </a>
@@ -92,50 +92,25 @@ const siteLangFormat = siteLang.replace("_", "-");
 </script>
 
 <style>
-  /* Ensure the navigation container expands horizontally as needed */
-  #plate-nav {
-    overflow-x: auto;
-    scrollbar-width: thin; /* Optional: Reduce scrollbar size for better UX */
-    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
-  }
-
-  /* Remove default scrollbar styling (if desired) */
-  #plate-nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Allow items to wrap or scroll horizontally */
-  #plate-nav ul {
-    display: flex;
-    gap: 8px; /* Adjust spacing between items */
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    white-space: nowrap; /* Prevent wrapping */
-  }
-
-  /* Ensure individual items are flexible */
-  #plate-nav li {
-    flex-shrink: 0; /* Prevent shrinking */
-    min-width: fit-content; /* Allow items to take up necessary space */
-  }
-
-  /* Adjust link styling for better readability */
+  /* Remove max-width constraints and ensure single-line text */
   #plate-nav a {
-    max-width: none; /* Remove max-width constraint */
-    white-space: normal; /* Allow text to wrap if necessary */
-    overflow: visible; /* Prevent truncation */
+    white-space: nowrap !important;
+    max-width: none !important;
   }
 
-  /* Responsive adjustments for smaller screens */
-  @media (max-width: 768px) {
-    #plate-nav a {
-      font-size: 0.875rem; /* Reduce font size for better fit */
-      max-width: 120px; /* Adjust max width for smaller screens */
-    }
+  /* Optional: Add horizontal scroll padding */
+  #plate-nav {
+    scroll-padding-inline: 1rem;
+  }
 
+  @media (max-width: 768px) {
+    /* Maintain text size and spacing for mobile */
+    #plate-nav a {
+      font-size: 0.875rem;
+      padding: 0 0.5rem;
+    }
     #plate-nav ul {
-      gap: 4px; /* Reduce spacing between items */
+      gap: 12px;
     }
   }
 </style>
