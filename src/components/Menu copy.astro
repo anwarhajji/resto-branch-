@@ -78,16 +78,14 @@ const siteLangFormat = siteLang.replace("_", "-");
   import "swiper/css";
 
   document.addEventListener("astro:page-load", () => {
-    const swiperPlates = document.querySelector(".swiper-plates");
-    if (swiperPlates) {
-      new Swiper(swiperPlates, {
-        loop: false,
-        spaceBetween: 8, // Reduced spacing for smaller screens
-        slidesPerView: "auto",
-        freeMode: true, // Allow smooth scrolling without strict snapping
-        watchSlidesProgress: true, // Enable dynamic slide updates
-      });
-    }
+    // Pass the CSS selector string directly to Swiper
+    new Swiper(".swiper-plates", {
+      loop: false,
+      spaceBetween: 8, // Reduced spacing for smaller screens
+      slidesPerView: "auto",
+      freeMode: true, // Allow smooth scrolling without strict snapping
+      watchSlidesProgress: true, // Enable dynamic slide updates
+    });
   });
 </script>
 
