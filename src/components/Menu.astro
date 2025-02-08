@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import { siteLang, siteCurrency } from "~/data/config";
+
+// Fetch the collection of plates
 const plates = await getCollection("plates");
 const siteLangFormat = siteLang.replace("_", "-");
 ---
@@ -8,13 +10,19 @@ const siteLangFormat = siteLang.replace("_", "-");
 <!-- Quick Nav -->
 <div class="mb-20 sticky top-8 z-10">
   <nav
-    class="custom-bg-light-brown text-brown rounded-full max-w-5xl mx-auto swiper-plates w-full"
+    class="custom-bg-light-brown text-brown rounded-full max-w-5xl mx-auto swiper-plates w-full flex items-center gap-4 justify-center overflow-hidden"
   >
-    <ul id="plate-nav" class="px-6 py-3 swiper-wrapper h-auto w-auto">
+    <ul
+      id="plate-nav"
+      class="px-6 py-3 swiper-wrapper h-auto w-auto flex gap-4 sm:justify-center overflow-x-auto whitespace-nowrap"
+    >
       {
         plates.map((plate) => (
-          <li class="swiper-slide !w-max">
-            <a href={`#${plate.data.slug}`} class="font-medium select-none">
+          <li class="swiper-slide !w-max min-w-fit flex-shrink-0">
+            <a
+              href={`#${plate.data.slug}`}
+              class="font-medium select-none whitespace-normal overflow-visible max-w-[150px] text-sm md:text-base"
+            >
               {plate.data.prettyName}
             </a>
           </li>
@@ -29,10 +37,11 @@ const siteLangFormat = siteLang.replace("_", "-");
     plates.map((plate) => (
       <div id={plate.data.slug} class="space-y-16 scroll-mt-20">
         <div class="flex flex-col items-center gap-2 max-w-lg mx-auto text-balance text-center">
-          <h3 class="h4 text-brown">{plate.data.prettyName}</h3>
+          <h3 class="h3 text-brown font-bold custom-bg-light-brown px-4 py-2 rounded-md">
+            {plate.data.prettyName}
+          </h3>
           <p>{plate.data.description}</p>
         </div>
-
         <dl class="max-w-5xl mx-auto">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-x-16 xl:gap-x-32">
             {plate.data.plates.map((item) => (
@@ -69,13 +78,62 @@ const siteLangFormat = siteLang.replace("_", "-");
   import "swiper/css";
 
   document.addEventListener("astro:page-load", () => {
-    const swiperPlates = document.querySelector(
-      ".swiper-plates"
-    ) as HTMLElement;
-    new Swiper(swiperPlates, {
+    // Pass the CSS selector string directly to Swiper
+    new Swiper(".swiper-plates", {
       loop: false,
-      spaceBetween: 32,
+      spaceBetween: 8, // Reduced spacing for smaller screens
       slidesPerView: "auto",
+      freeMode: true, // Allow smooth scrolling without strict snapping
+      watchSlidesProgress: true, // Enable dynamic slide updates
     });
   });
 </script>
+
+<style>
+  /* Ensure the navigation container expands horizontally as needed */
+  #plate-nav {
+    overflow-x: auto;
+    scrollbar-width: thin; /* Optional: Reduce scrollbar size for better UX */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  }
+
+  /* Remove default scrollbar styling (if desired) */
+  #plate-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Allow items to wrap or scroll horizontally */
+  #plate-nav ul {
+    display: flex;
+    gap: 8px; /* Adjust spacing between items */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    white-space: nowrap; /* Prevent wrapping */
+  }
+
+  /* Ensure individual items are flexible */
+  #plate-nav li {
+    flex-shrink: 0; /* Prevent shrinking */
+    min-width: fit-content; /* Allow items to take up necessary space */
+  }
+
+  /* Adjust link styling for better readability */
+  #plate-nav a {
+    max-width: none; /* Remove max-width constraint */
+    white-space: normal; /* Allow text to wrap if necessary */
+    overflow: visible; /* Prevent truncation */
+  }
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    #plate-nav a {
+      font-size: 0.875rem; /* Reduce font size for better fit */
+      max-width: 120px; /* Adjust max width for smaller screens */
+    }
+
+    #plate-nav ul {
+      gap: 4px; /* Reduce spacing between items */
+    }
+  }
+</style>
