@@ -1,0 +1,147 @@
+[
+	{
+		"id": 1,
+		"slug": "dessert",
+		"prettyName": "Dessert",
+		"description": "All served with soft vanilla ice cream or whipped cream.",
+		"plates": [
+			{
+				"name": "Icy Croissant",
+				"description": "A croissant filled with your choice of ice cream, drizzled with pistachio cream and milk chocolate.",
+				"price": 7.9
+			},
+			{
+				"name": "Le Croockie",
+				"description": "Flaky golden and buttery croissants stuffed with chocolate chip cookie dough and topped with more dough, baked until chewy and fudgy, drizzled with white or milk chocolate.",
+				"price": 7.9
+			},
+			{
+				"name": "Le Croffle",
+				"description": "A combination of waffle and croissant, crunchy and caramelized, drizzled with choice of chocolate milk or pistachio cream.",
+				"price": 7.9
+			},
+			{
+				"name": "Cookie Dough Pistachio & Kunafa",
+				"description": "A warm cookie dough topped with kunafa and pistachio sauce, served with ice cream.",
+				"price": 10.9
+			},
+			{
+				"name": "Chocolat Blanc",
+				"description": "Soft and freshly baked white chocolate chip cookie dough drizzled in Belgian milk chocolate sauce and topped with chocolate curls.",
+				"price": 8.9
+			},
+			{
+				"name": "Oreo Time",
+				"description": "Soft and freshly baked milk chocolate chip cookie dough drizzled in Belgian white chocolate sauce and topped with Oreo crumbs and Oreo biscuit.",
+				"price": 8.9
+			},
+			{
+				"name": "La Pistachio Cookie",
+				"description": "Soft and freshly baked milk chocolate chip cookie dough drizzled in pistachio and topped with pistachio crumbles.",
+				"price": 9.9
+			}
+		]
+	},
+	{
+		"id": 2,
+		"slug": "salads",
+		"prettyName": "Salads",
+		"description": "Fresh and healthy salads with homemade dressings.",
+		"plates": [
+			{
+				"name": "Halloumi Salad",
+				"description": "Mixed salad leaves, cherry tomatoes, grilled halloumi drizzled with our homemade dressing.",
+				"price": 8.9
+			},
+			{
+				"name": "Chicken Salad",
+				"description": "Marinated grilled chicken, salad, olives, tomatoes, cucumber, drizzled with our homemade dressing.",
+				"price": 9.5
+			}
+		]
+	},
+	{
+		"id": 3,
+		"slug": "burgers",
+		"prettyName": "Burgers",
+		"description": "Delicious burgers served in brioche buns with fries.",
+		"plates": [
+			{
+				"name": "Classic Smash Burger",
+				"description": "Two 3oz Aberdeen angus beef patties smashed and topped with caramelized onions, American cheese, gherkins, and a branché house-made sauce, served in a seeded brioche bun with fries.",
+				"price": 11.9
+			},
+			{
+				"name": "Peri Chicken Burger",
+				"description": "Succulent fillet marinated in peri sauce and topped with fresh lettuce, gherkins, tomatoes, red onions, and cheese, served in a brioche bun with fries.",
+				"price": 10.9
+			},
+			{
+				"name": "Veggie Burger",
+				"description": "Fried veggie patty topped with lettuce, garlic mayo, gherkins, tomato, and cheese, served in a brioche bun with fries.",
+				"price": 9.9
+			},
+			{
+				"name": "Halloumi Burger",
+				"description": "Lightly grilled Halloumi, lettuce, tomato, and red onions, drizzled in a sweet and spicy chilli and mayo sauce, served in a lightly toasted brioche bun with fries.",
+				"price": 10.9
+			},
+			{
+				"name": "Buttermilk Fried Chicken Burger",
+				"description": "Buttermilk crispy fried chicken fillet topped with lettuce, gherkins, melted American cheese, and an in-house garlic mayo sauce, served in a brioche bun with fries.",
+				"price": 10.9
+			}
+		]
+	},
+	{
+		"id": 4,
+		"slug": "french-tacos",
+		"prettyName": "French Tacos",
+		"description": "Customizable French tacos with your choice of meats and sauces.",
+		"plates": [
+			{
+				"name": "XXL French Tacos to Share",
+				"description": "Large French tacos to share, customizable with your choice of meats and sauces.",
+				"price": 24.0
+			},
+			{
+				"name": "Build Your Own Taco",
+				"description": "Customizable tacos with your choice of size, meats, and sauces.",
+				"price": 7.9
+			}
+		]
+	},
+	{
+		"id": 5,
+		"slug": "loaded-fries",
+		"prettyName": "Loaded Fries",
+		"description": "Crispy fries loaded with delicious toppings and our legendary melted cheese sauce.",
+		"plates": [
+			{
+				"name": "Classic Loaded Fries",
+				"description": "Fries topped with marinated chicken, crispy chicken, garlic mayo, and our legendary melted cheese sauce.",
+				"price": 8.9
+			},
+			{
+				"name": "Frenchie Loaded Fries",
+				"description": "Fries topped with minced beef, cordon bleu, BBQ sauce, and our legendary melted cheese sauce.",
+				"price": 8.9
+			},
+			{
+				"name": "Special Loaded Fries",
+				"description": "Fries topped with marinated chicken, cordon bleu, crispy onions, Algerian sauce, and our legendary melted cheese sauce.",
+				"price": 8.9
+			},
+			{
+				"name": "Spicy Loaded Fries",
+				"description": "Fries topped with crispy chicken, cordon bleu, turkey bacon, crispy onions, harissa, and our legendary melted cheese sauce.",
+				"price": 8.9
+			},
+			{
+				"name": "Loaded Fries",
+				"description": "Fries with 6 cheesy jalapeño balls, 6 crispy chicken bites, and peri fries.",
+				"price": 6.0
+			}
+		]
+	}
+]

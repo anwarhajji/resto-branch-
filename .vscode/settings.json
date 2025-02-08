@@ -1,0 +1,10 @@
+{
+    "css.customData": [".vscode/tailwind.json"],
+    "html.format.contentUnformatted": "pre,code,textarea",
+    "html.format.unformatted": "textarea",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#332E07",
+        "titleBar.activeBackground": "#48400A",
+        "titleBar.activeForeground": "#FCFAEB"
+    }
+}

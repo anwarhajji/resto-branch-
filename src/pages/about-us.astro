@@ -1,0 +1,111 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Hero from "~/components/Hero.astro";
+import { Picture } from "astro:assets";
+import Badge from "~/components/Badge.astro";
+import Button from "~/components/Button.astro";
+import ButtonCallUs from "~/components/ButtonCallUs.astro";
+import Article from "~/components/Article.astro";
+// Images
+import CafeHero from "~/assets/images/her4.png"; // Replace this with your actual image path
+---
+
+<Layout>
+  <Section class:list={"bg-white"}>
+    <Hero>
+      <div slot="hero-content-left" class="prose max-w-none max-lg:order-1">
+        <Badge title="branché café" />
+        <h1 class="font-black">
+          Welcome to branché – Where Fresh Meets Familiar
+        </h1>
+        <p>
+          Discover a unique brunch experience inspired by the serene charm of
+          the South of France. Located in the heart of Leyton, our café combines
+          fresh, seasonal ingredients with a cozy, inviting atmosphere that
+          feels just like home.
+        </p>
+      </div>
+      <div slot="hero-content-right">
+        <Picture
+          class:list={"mx-auto"}
+          src={CafeHero}
+          height={600}
+          formats={["avif", "webp"]}
+          alt="A description of the café."
+          loading={"eager"}
+          fetchpriority={"high"}
+        />
+      </div>
+    </Hero>
+  </Section>
+
+  <Section class:list={"bg-white"}>
+    <Article>
+      <h2>About Us</h2>
+      <p>
+        Welcome to <strong>branché</strong>, where we bring the joy of fresh,
+        delicious food in a space that feels just like home. Located in the
+        heart of Leyton, our café offers a unique brunch experience inspired by
+        the serene charm of the South of France. With a focus on quality,
+        simplicity, and seasonal ingredients, we invite you to indulge in a menu
+        that blends classic brunch favorites with a contemporary twist.
+      </p>
+
+      <h3>Our Story</h3>
+      <p>
+        Founded by Jalila Elmastouki, <strong>branché</strong> is the realization
+        of a lifelong passion for food and creating spaces where people feel truly
+        at home. After spending over 10 years in the fashion industry, I decided
+        to follow my heart and embark on a new journey—one centered around the simple
+        pleasures of good food, great company, and a cozy, inviting atmosphere.
+      </p>
+      <p>
+        Though my career in fashion was fulfilling, I always found myself drawn
+        to the world of food and the comfort of spaces that felt like an
+        extension of home. Inspired by my love for the warm, relaxed ambiance of
+        places I’ve visited around the world, I decided to create a café that
+        embodies that same feeling of warmth and connection.
+      </p>
+      <p>
+        After the success of our first location, we’re excited to open a second
+        branch and continue sharing this special experience with more people in
+        our community. Whether you're here to enjoy our signature Croissant
+        Avocado Benedict or simply unwind with a cup of coffee, we want every
+        moment spent at <strong>branché</strong> to feel like an escape into a place
+        where you truly belong.
+      </p>
+
+      <h3>Our Philosophy</h3>
+      <p>
+        We believe in taking a fresh, thoughtful approach to food, using only
+        the best local ingredients. Our menu is crafted with care, prioritizing
+        wholesome, nourishing dishes that are as satisfying as they are
+        delicious. We cater to all tastes—whether you’re craving something
+        savory, sweet, or refreshing, we have a dish that’s perfect for you.
+      </p>
+      <p>
+        As part of our mission, we aim to create a space that fosters
+        connection, joy, and a sense of belonging. Whether you’re here to enjoy
+        a meal with loved ones or simply relax on your own, we want you to feel
+        part of the <strong>branché</strong> family.
+      </p>
+
+      <h4>What Makes Us Special?</h4>
+      <ul>
+        <li>
+          <strong>Fresh Ingredients:</strong> Seasonal produce and locally sourced
+          goodness.
+        </li>
+        <li>
+          <strong>Minimalist Ambiance:</strong> Soothing tones and relaxed elegance
+          inspired by the French Riviera.
+        </li>
+        <li>
+          <strong>Community Connection:</strong> A space designed to make you feel
+          at ease and connected.
+        </li>
+      </ul>
+    </Article>
+  </Section>
+</Layout>
