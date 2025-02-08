@@ -1,10 +1,12 @@
 ---
 import { menuMain } from "~/data/menus.js";
+
 const rmTrailingSlash = (path: string): string => {
   return path.endsWith("/") && path.length > 1
     ? path.slice(0, path.length - 1)
     : path;
 };
+
 const pathname = rmTrailingSlash(Astro.url.pathname);
 ---
 
@@ -42,16 +44,6 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
           menuMain.map((item) => (
             <a
               href={item.url}
-              target={
-                item.url.startsWith("http") && !item.url.startsWith("/")
-                  ? "_blank"
-                  : undefined
-              }
-              rel={
-                item.url.startsWith("http") && !item.url.startsWith("/")
-                  ? "noopener noreferrer"
-                  : undefined
-              }
               class={`transition text-base/6 font-semibold hover:text-brand-green ${item.highlighted ? "menu-item-highlighted" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
             >
               {item.name}
@@ -60,8 +52,50 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
         }
       </div>
     </nav>
-
-    <!-- Mobile Menu -->
+    <!-- ... 
+	<nav class="flex items-center justify-between" aria-label="Global">
+		<a href="/" class="-m-1.5 p-1.5">
+		  <p class="font-bold text-4xl text-brand-black/5">
+			branché<span class="text-brand-black px-3 ml-1 rounded-lg">.</span>
+		  </p>
+		</a>
+		<div class="flex lg:hidden">
+		  <button
+			type="button"
+			class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+			@click="open = true"
+		  >
+			<span class="sr-only">Open main menu</span>
+			<svg
+			  class="size-8 text-brand-green"
+			  fill="none"
+			  viewBox="0 0 24 24"
+			  stroke-width="1.5"
+			  stroke="currentColor"
+			  aria-hidden="true"
+			  data-slot="icon"
+			>
+			  <path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+			</svg>
+		  </button>
+		</div>
+		<div class="hidden lg:flex lg:gap-x-12 lg:items-center">
+		  {
+			menuMain.map((item) => (
+			  <a
+				href={item.url}
+				class={`transition text-base/6 font-semibold hover:text-brand-green ${item.highlighted ? "menu-item-highlighted" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
+			  >
+				{item.name}
+			  </a>
+			))
+		  }
+		</div>
+	  </nav>
+	  -->
     <div
       class="lg:hidden"
       x-ref="dialog"
@@ -81,8 +115,10 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
         x-cloak
       >
         <div class="flex items-center justify-between">
-          <a href="/" class="-m-1.5 p-1.5 flex items-center">
-            <img src="/logo.png" alt="Logo" class="h-15 w-auto" />
+          <a href="/" class="-m-1.5 p-1.5">
+            <a href="/" class="-m-1.5 p-1.5 flex items-center">
+              <img src="/logo.png" alt="Logo" class="h-15 w-auto" />
+            </a>
           </a>
           <button
             type="button"
@@ -114,16 +150,6 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
                   <a
                     @click="open = false"
                     href={item.url}
-                    target={
-                      item.url.startsWith("http") && !item.url.startsWith("/")
-                        ? "_blank"
-                        : undefined
-                    }
-                    rel={
-                      item.url.startsWith("http") && !item.url.startsWith("/")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
                     class={`block py-2 text-center font-semibold text-3xl ${item.highlighted ? "menu-item-highlighted w-max mx-auto !px-8 !py-2" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
                   >
                     {item.name}

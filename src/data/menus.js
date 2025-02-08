@@ -26,7 +26,7 @@ export const menuMain = [
     },
     {
         name: "Book",
-        url: "/book",
+        url: "https://www.ubereats.com/gb/store/branche/xWRDFRXNTI-nfFikhQ4Feg?srsltid=AfmBOoqBDj3Yubu_UumdoJaFQ9Avjx6b6hWVKq4kk-zG4MlzQh4VsY-D",
         highlighted: true,
     },
 ];
