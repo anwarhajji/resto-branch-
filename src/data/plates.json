@@ -1,147 +1,502 @@
 [
-	{
-		"id": 1,
-		"slug": "dessert",
-		"prettyName": "Dessert",
-		"description": "All served with soft vanilla ice cream or whipped cream.",
-		"plates": [
-			{
-				"name": "Icy Croissant",
-				"description": "A croissant filled with your choice of ice cream, drizzled with pistachio cream and milk chocolate.",
-				"price": 7.9
-			},
-			{
-				"name": "Le Croockie",
-				"description": "Flaky golden and buttery croissants stuffed with chocolate chip cookie dough and topped with more dough, baked until chewy and fudgy, drizzled with white or milk chocolate.",
-				"price": 7.9
-			},
-			{
-				"name": "Le Croffle",
-				"description": "A combination of waffle and croissant, crunchy and caramelized, drizzled with choice of chocolate milk or pistachio cream.",
-				"price": 7.9
-			},
-			{
-				"name": "Cookie Dough Pistachio & Kunafa",
-				"description": "A warm cookie dough topped with kunafa and pistachio sauce, served with ice cream.",
-				"price": 10.9
-			},
-			{
-				"name": "Chocolat Blanc",
-				"description": "Soft and freshly baked white chocolate chip cookie dough drizzled in Belgian milk chocolate sauce and topped with chocolate curls.",
-				"price": 8.9
-			},
-			{
-				"name": "Oreo Time",
-				"description": "Soft and freshly baked milk chocolate chip cookie dough drizzled in Belgian white chocolate sauce and topped with Oreo crumbs and Oreo biscuit.",
-				"price": 8.9
-			},
-			{
-				"name": "La Pistachio Cookie",
-				"description": "Soft and freshly baked milk chocolate chip cookie dough drizzled in pistachio and topped with pistachio crumbles.",
-				"price": 9.9
-			}
-		]
-	},
-	{
-		"id": 2,
-		"slug": "salads",
-		"prettyName": "Salads",
-		"description": "Fresh and healthy salads with homemade dressings.",
-		"plates": [
-			{
-				"name": "Halloumi Salad",
-				"description": "Mixed salad leaves, cherry tomatoes, grilled halloumi drizzled with our homemade dressing.",
-				"price": 8.9
-			},
-			{
-				"name": "Chicken Salad",
-				"description": "Marinated grilled chicken, salad, olives, tomatoes, cucumber, drizzled with our homemade dressing.",
-				"price": 9.5
-			}
-		]
-	},
-	{
-		"id": 3,
-		"slug": "burgers",
-		"prettyName": "Burgers",
-		"description": "Delicious burgers served in brioche buns with fries.",
-		"plates": [
-			{
-				"name": "Classic Smash Burger",
-				"description": "Two 3oz Aberdeen angus beef patties smashed and topped with caramelized onions, American cheese, gherkins, and a branché house-made sauce, served in a seeded brioche bun with fries.",
-				"price": 11.9
-			},
-			{
-				"name": "Peri Chicken Burger",
-				"description": "Succulent fillet marinated in peri sauce and topped with fresh lettuce, gherkins, tomatoes, red onions, and cheese, served in a brioche bun with fries.",
-				"price": 10.9
-			},
-			{
-				"name": "Veggie Burger",
-				"description": "Fried veggie patty topped with lettuce, garlic mayo, gherkins, tomato, and cheese, served in a brioche bun with fries.",
-				"price": 9.9
-			},
-			{
-				"name": "Halloumi Burger",
-				"description": "Lightly grilled Halloumi, lettuce, tomato, and red onions, drizzled in a sweet and spicy chilli and mayo sauce, served in a lightly toasted brioche bun with fries.",
-				"price": 10.9
-			},
-			{
-				"name": "Buttermilk Fried Chicken Burger",
-				"description": "Buttermilk crispy fried chicken fillet topped with lettuce, gherkins, melted American cheese, and an in-house garlic mayo sauce, served in a brioche bun with fries.",
-				"price": 10.9
-			}
-		]
-	},
-	{
-		"id": 4,
-		"slug": "french-tacos",
-		"prettyName": "French Tacos",
-		"description": "Customizable French tacos with your choice of meats and sauces.",
-		"plates": [
-			{
-				"name": "XXL French Tacos to Share",
-				"description": "Large French tacos to share, customizable with your choice of meats and sauces.",
-				"price": 24.0
-			},
-			{
-				"name": "Build Your Own Taco",
-				"description": "Customizable tacos with your choice of size, meats, and sauces.",
-				"price": 7.9
-			}
-		]
-	},
-	{
-		"id": 5,
-		"slug": "loaded-fries",
-		"prettyName": "Loaded Fries",
-		"description": "Crispy fries loaded with delicious toppings and our legendary melted cheese sauce.",
-		"plates": [
-			{
-				"name": "Classic Loaded Fries",
-				"description": "Fries topped with marinated chicken, crispy chicken, garlic mayo, and our legendary melted cheese sauce.",
-				"price": 8.9
-			},
-			{
-				"name": "Frenchie Loaded Fries",
-				"description": "Fries topped with minced beef, cordon bleu, BBQ sauce, and our legendary melted cheese sauce.",
-				"price": 8.9
-			},
-			{
-				"name": "Special Loaded Fries",
-				"description": "Fries topped with marinated chicken, cordon bleu, crispy onions, Algerian sauce, and our legendary melted cheese sauce.",
-				"price": 8.9
-			},
-			{
-				"name": "Spicy Loaded Fries",
-				"description": "Fries topped with crispy chicken, cordon bleu, turkey bacon, crispy onions, harissa, and our legendary melted cheese sauce.",
-				"price": 8.9
-			},
-			{
-				"name": "Loaded Fries",
-				"description": "Fries with 6 cheesy jalapeño balls, 6 crispy chicken bites, and peri fries.",
-				"price": 6.0
-			}
-		]
-	}
+    {
+        "id": 1,
+        "slug": "dessert",
+        "prettyName": "Dessert",
+        "description": "All served with soft vanilla ice cream or whipped cream.",
+        "plates": [
+            {
+                "name": "Icy Croissant",
+                "description": "A croissant filled with your choice of ice cream, drizzled with pistachio cream and milk chocolate.",
+                "price": 7.9
+            },
+            {
+                "name": "Le Croockie",
+                "description": "Flaky golden and buttery croissants stuffed with chocolate chip cookie dough and topped with more dough, baked until chewy and fudgy, drizzled with white or milk chocolate.",
+                "price": 7.9
+            },
+            {
+                "name": "Le Croffle",
+                "description": "A combination of waffle and croissant, crunchy and caramelized, drizzled with choice of chocolate milk or pistachio cream.",
+                "price": 7.9
+            },
+            {
+                "name": "Cookie Dough Pistachio & Kunafa",
+                "description": "A warm cookie dough topped with kunafa & pistachio sauce, and served with ice cream.",
+                "price": 10.9
+            },
+            {
+                "name": "Chocolat Blanc",
+                "description": "Soft and freshly baked white chocolate chip cookie dough drizzled in Belgian milk chocolate sauce and topped with chocolate curls.",
+                "price": 8.9
+            },
+            {
+                "name": "Oreo Time",
+                "description": "Soft and freshly baked milk chocolate chip cookie dough drizzled in Belgian white chocolate sauce and topped with Oreo crumbs and Oreo biscuit.",
+                "price": 8.9
+            },
+            {
+                "name": "La Pistachio Cookie",
+                "description": "Soft and freshly baked milk chocolate chip cookie dough drizzled in pistachio and topped with pistachio crumbles.",
+                "price": 9.9
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "slug": "burgers",
+        "prettyName": "Burgers",
+        "description": "Delicious burgers served in brioche buns with fries.",
+        "plates": [
+            {
+                "name": "Classic Smash Burger",
+                "description": "Two 3oz Aberdeen angus beef patties smashed and topped with caramelized onions, American cheese, gherkins, and a Branché house-made sauce, served in a seeded brioche bun with fries.",
+                "price": 11.9
+            },
+            {
+                "name": "Peri Chicken Burger",
+                "description": "Succulent fillet marinated in peri sauce and topped with fresh lettuce, gherkins, tomatoes, red onions, and cheese, served in a brioche bun with fries.",
+                "price": 10.9
+            },
+            {
+                "name": "Veggie Burger",
+                "description": "Fried veggie patty, topped with lettuce, garlic mayo, gherkins, tomato, and cheese, served in a brioche bun with fries.",
+                "price": 9.9
+            },
+            {
+                "name": "Halloumi Burger",
+                "description": "Lightly grilled Halloumi, lettuce, tomato, and red onions, drizzled in a sweet and spicy chilli and mayo sauce, in a lightly toasted brioche bun with fries.",
+                "price": 10.9
+            },
+            {
+                "name": "Buttermilk Fried Chicken Burger",
+                "description": "Buttermillk crispy fried chicken fillet, topped with lettuce, gherkins, melted American cheese, and an in-house garlic mayo sauce, served in a brioche bun with fries.",
+                "price": 10.9
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "slug": "salads",
+        "prettyName": "Salads",
+        "description": "Fresh and healthy salads with homemade dressings.",
+        "plates": [
+            {
+                "name": "Halloumi Salad",
+                "description": "Mixed salad leaves, cherry tomatoes, grilled halloumi drizzled with our homemade dressing.",
+                "price": 8.9
+            },
+            {
+                "name": "Chicken Salad",
+                "description": "Marinated grilled chicken, salad, olives, tomatoes, cucumber, drizzled with our homemade dressing.",
+                "price": 9.5
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "slug": "loaded-fries",
+        "prettyName": "Loaded Fries",
+        "description": "Crispy fries loaded with delicious toppings and our legendary melted cheese sauce.",
+        "plates": [
+            {
+                "name": "Classic Loaded Fries",
+                "description": "Fries topped with marinated chicken, crispy chicken, garlic mayo, and our legendary melted cheese sauce.",
+                "price": 8.9
+            },
+            {
+                "name": "Frenchy Loaded Fries",
+                "description": "Fries topped with minced beef, cordon bleu, BBQ sauce, and our legendary melted cheese sauce.",
+                "price": 8.9
+            },
+            {
+                "name": "Special Loaded Fries",
+                "description": "Fries topped with marinated chicken, cordon bleu, crispy onions, Algerian sauce, and our legendary melted cheese sauce.",
+                "price": 8.9
+            },
+            {
+                "name": "Spicy Loaded Fries",
+                "description": "Fries topped with crispy chicken, cordon bleu, turkey bacon, crispy onions, harissa, and our legendary melted cheese sauce.",
+                "price": 8.9
+            },
+            {
+                "name": "Loaded Fries",
+                "description": "6 cheesy jalapeño balls, 6 crispy chicken bites, and peri fries.",
+                "price": 6.0
+            }
+        ]
+    },
+    
+	
+		
+		
+		{
+			"id": 5,
+			"slug": "french-tacos",
+			"prettyName": "French Tacos",
+			"description": "Customizable French tacos available in small, medium, and large sizes.",
+			"plates": [
+				
+			
+				
+				{
+					"name": "Veggie (Small)",
+					"description": "A veggie burger, tomatoes, pickles, crispy onions, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 7.9
+				},
+				{
+					"name": "Veggie (Medium)",
+					"description": "A veggie burger, tomatoes, pickles, crispy onions, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 9
+				},
+				{
+					"name": "Veggie (Large)",
+					"description": "A veggie burger, tomatoes, pickles, crispy onions, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 11.95
+				},
+				{
+					"name": "The Spicy (Small)",
+					"description": "Crispy chicken, cordon bleu, turkey bacon, crispy onions, harissa, fries, and our legendary melting cheese sauce.",
+					"price": 7.9
+				},
+				{
+					"name": "The Spicy (Medium)",
+					"description": "Crispy chicken, cordon bleu, turkey bacon, crispy onions, harissa, fries, and our legendary melting cheese sauce.",
+					"price": 9
+				},
+				{
+					"name": "The Spicy (Large)",
+					"description": "Crispy chicken, cordon bleu, turkey bacon, crispy onions, harissa, fries, and our legendary melting cheese sauce.",
+					"price": 11.95
+				},
+				{
+					"name": "Falafel (Small)",
+					"description": "Pickles, tomatoes, crispy onions, falafels, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 7.9
+				},
+				{
+					"name": "Falafel (Medium)",
+					"description": "Pickles, tomatoes, crispy onions, falafels, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 9
+				},
+				{
+					"name": "Falafel (Large)",
+					"description": "Pickles, tomatoes, crispy onions, falafels, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 11.95
+				},
+				{
+					"name": "The Special (Small)",
+					"description": "Marinated chicken, cordon bleu, crispy onions, Algerian sauce, fries, and our legendary melting cheese sauce.",
+					"price": 7.9
+				},
+				{
+					"name": "The Special (Medium)",
+					"description": "Marinated chicken, cordon bleu, crispy onions, Algerian sauce, fries, and our legendary melting cheese sauce.",
+					"price": 9
+				},
+				{
+					"name": "The Special (Large)",
+					"description": "Marinated chicken, cordon bleu, crispy onions, Algerian sauce, fries, and our legendary melting cheese sauce.",
+					"price": 11.95
+				},
+				{
+					"name": "The Healthy (Small)",
+					"description": "Chicken, avocado, tomatoes, salad, and our legendary melting cheese sauce.",
+					"price": 7.9
+				},
+				{
+					"name": "The Healthy (Medium)",
+					"description": "Chicken, avocado, tomatoes, salad, and our legendary melting cheese sauce.",
+					"price": 9
+
+	
+				},
+				{
+					"name": "The Healthy (Large)",
+					"description": "Chicken, avocado, tomatoes, salad, and our legendary melting cheese sauce.",
+					"price": 11.95
+				},
+				{
+					"name": "Classic (Small)",
+					"description": "Marinated chicken, crispy chicken, garlic mayo, fries, and our legendary melting cheese sauce.",
+					"price": 7.9
+				},
+				{
+					"name": "Classic (Medium)",
+					"description": "Marinated chicken, crispy chicken, garlic mayo, fries, and our legendary melting cheese sauce.",
+					"price": 9
+				},
+				{
+					"name": "Classic (Large)",
+					"description": "Marinated chicken, crispy chicken, garlic mayo, fries, and our legendary melting cheese sauce.",
+					"price": 11.95
+				},
+				{
+					"name": "Grilled Halloumi (Small)",
+					"description": "Halloumi burger, tomato, crispy onions, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 7.9
+				},
+				{
+					"name": "Grilled Halloumi (Medium)",
+					"description": "Halloumi burger, tomato, crispy onions, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 9
+				},
+				{
+					"name": "Grilled Halloumi (Large)",
+					"description": "Halloumi burger, tomato, crispy onions, mayo, fries, and our legendary melting cheese sauce.",
+					"price": 11.95
+				},
+				{
+					"name": "Frenchy (Small)",
+					"description": "Minced beef, cordon bleu, fries, BBQ sauce, and our legendary melting cheese sauce.",
+					"price": 7.9
+				},
+				{
+					"name": "Frenchy (Medium)",
+					"description": "Minced beef, cordon bleu, fries, BBQ sauce, and our legendary melting cheese sauce.",
+					"price": 9
+				},
+				{
+					"name": "Frenchy (Large)",
+					"description": "Minced beef, cordon bleu, fries, BBQ sauce, and our legendary melting cheese sauce.",
+					"price": 11.95
+				}
+,
+				{
+					"name": "XXL French Tacos to Share",
+					"description": "Large French tacos to share, customizable with your choice of meats and sauces.",
+					"price": 24.0
+				},{
+					"name": "Build Your Own Taco (Medium)",
+					"description": "Customizable medium-sized tacos with your choice of fillings and sauces. Includes 2 meats of your choice. Choose from: Marinated Chicken, Crispy Chicken, Minced Beef, Cordon Bleu (*Breaded chicken stuffed with cheese and turkey ham). Available sauces: Mayo, Garlic Mayo, Ketchup, BBQ, Piri Piri, Harissa, Algerian Sauce.",
+					"price": 9.0
+				},
+				{
+					"name": "Build Your Own Taco (Large)",
+					"description": "Customizable large-sized tacos with your choice of fillings and sauces. Double tortilla + 3 meats of your choice. Choose from: Marinated Chicken, Crispy Chicken, Minced Beef, Cordon Bleu (*Breaded chicken stuffed with cheese and turkey ham). Available sauces: Mayo, Garlic Mayo, Ketchup, BBQ, Piri Piri, Harissa, Algerian Sauce.",
+					"price": 11.95
+				}
+			]
+		},
+	
+
+
+
+
+
+    {
+        "id": 6,
+        "slug": "brunch",
+        "prettyName": "Brunch",
+        "description": "A delightful selection of brunch dishes, perfect for a leisurely morning.",
+        "plates": [
+            {
+                "name": "Avocado Egg Salmon Toast",
+                "description": "Toasted sourdough topped with creamy mashed avocado, fresh rocket, vine-ripened tomatoes, smoked salmon, and two perfectly poached eggs.",
+                "price": 11.9
+            },
+            {
+                "name": "Full English Breakfast",
+                "description": "Grilled vegetables (mushroom, tomatoes), baked beans, turkey bacon, sausages, fried eggs, hash browns.",
+                "price": 11.9
+            },
+            {
+                "name": "Crème Brûlée",
+                "description": "Brioche French toast topped with crème brûlée, served with fresh berries, maple syrup, and soft ice cream.",
+                "price": 11.9
+            },
+            {
+                "name": "Branché Edition",
+                "description": "Served with a side of seasonal fruit, pancakes, fried eggs, turkey bacon, beef sausages, hash browns, grilled tomatoes, mushroom, and baked beans.",
+                "price": 13.9
+            },
+            {
+                "name": "Buttermilk Fried Chicken & Waffle",
+                "description": "No description available.",
+                "price": 11.9
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "slug": "french-toast",
+        "prettyName": "French Toast",
+        "description": "Indulgent French toasts with various flavors and toppings.",
+        "plates": [
+            {
+                "name": "Classic French Toast",
+                "description": "Served with maple syrup, fresh berries, and soft ice cream.",
+                "price": 10.9
+            },
+            {
+                "name": "Tiramisu French Toast",
+                "description": "Brioche French toast infused with coffee, layered with creamy mascarpone, dusted with cocoa, and served with fresh berries.",
+                "price": 12.5
+            },
+            {
+                "name": "Lotus & Banana Brûlée",
+                "description": "Brioche French toast served with caramelized banana, Lotus Biscoff sauce, fresh berries, and soft ice cream.",
+                "price": 12.9
+            },
+            {
+                "name": "Pistachio French Toast",
+                "description": "French toast filled with pistachio cream, served with fresh berries, pistachio sauce, and soft ice cream.",
+                "price": 12.5
+            },
+            {
+                "name": "Dubai Chocolate French Toast",
+                "description": "Brioche French toast topped with Dubai chocolate, served with pistachio sauce.",
+                "price": 13.9
+            },
+            {
+                "name": "Pistachio Tiramisu French Toast",
+                "description": "Rich coffee-soaked French toast layered with creamy pistachio mascarpone, topped with crushed pistachios.",
+                "price": 13.9
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "slug": "drinks",
+        "prettyName": "Drinks",
+        "description": "A variety of hot and cold beverages to accompany your meal.",
+        "plates": [
+            {
+                "name": "Flat White",
+                "description": "No description available.",
+                "price": 3.5
+            },
+            {
+                "name": "Cortado",
+                "description": "No description available.",
+                "price": 2.95
+            },
+            {
+                "name": "Long Black",
+                "description": "No description available.",
+                "price": 3.5
+            },
+            {
+                "name": "Matcha Latte",
+                "description": "No description available.",
+                "price": 3.95
+            },
+            {
+                "name": "Cappuccino",
+                "description": "No description available.",
+                "price": 3.5
+            },
+            {
+                "name": "Spanish Latte",
+                "description": "No description available.",
+                "price": 3.95
+            },
+            {
+                "name": "Chai Latte",
+                "description": "No description available.",
+                "price": 3.95
+            },
+            {
+                "name": "Americano",
+                "description": "No description available.",
+                "price": 3.5
+            },
+            {
+                "name": "Espresso",
+                "description": "No description available.",
+                "price": 2.95
+            },
+            {
+                "name": "Latte",
+                "description": "No description available.",
+                "price": 3.5
+            },
+            {
+                "name": "Mocha",
+                "description": "No description available.",
+                "price": 3.5
+            },
+            {
+                "name": "Hot Chocolate",
+                "description": "No description available.",
+                "price": 3.5
+            },
+            {
+                "name": "Green Tea",
+                "description": "No description available.",
+                "price": 2.95
+            },
+            {
+                "name": "English Breakfast Tea",
+                "description": "No description available.",
+                "price": 2.95
+            },
+            {
+                "name": "Fusion Tea",
+                "description": "No description available.",
+                "price": 3.5
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "slug": "signature-drinks",
+        "prettyName": "Signature Drinks",
+        "description": "Our exclusive signature drinks crafted for an unforgettable experience.",
+        "plates": [
+            {
+                "name": "White Chocolate Matcha",
+                "description": "No description available.",
+                "price": 6.9
+            },
+            {
+                "name": "Kinder Bueno",
+                "description": "No description available.",
+                "price": 6.9
+            },
+            {
+                "name": "Oreo",
+                "description": "No description available.",
+                "price": 6.9
+            },
+            {
+                "name": "Reeses Peanut",
+                "description": "No description available.",
+                "price": 6.9
+            },
+            {
+                "name": "Biscoff",
+                "description": "No description available.",
+                "price": 6.9
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "slug": "smoothies",
+        "prettyName": "Smoothies",
+        "description": "Refreshing smoothies made with fresh fruits and natural ingredients.",
+        "plates": [
+            {
+                "name": "Fresh Strawberry Delight",
+                "description": "Mixture of strawberry, banana, and peach.",
+                "price": 5.5
+            },
+            {
+                "name": "Blueberry Bliss",
+                "description": "Blueberry, raspberry, mango, and papaya.",
+                "price": 5.5
+            },
+            {
+                "name": "Raspberry Dream",
+                "description": "Raspberry, mango, papaya, and grape.",
+                "price": 5.5
+            },
+            {
+                "name": "Pineapple Haven",
+                "description": "Pineapple, pear, and mango.",
+                "price": 5.5
+            }
+        ]
+    }
 ]
