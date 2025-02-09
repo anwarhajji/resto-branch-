@@ -1,43 +1,37 @@
 ---
 import { getCollection } from "astro:content";
 import { siteLang, siteCurrency } from "~/data/config";
-
-// Fetch the collection of plates
 const plates = await getCollection("plates");
 const siteLangFormat = siteLang.replace("_", "-");
 ---
 
-<!-- Quick Nav -->
+<!-- Rounded Menu -->
 <div class="mb-20 sticky top-8 z-10">
   <nav
-    class="custom-bg-light-brown text-brown rounded-full max-w-5xl mx-auto swiper-plates w-full flex items-center gap-4 justify-center overflow-hidden"
+    class="bg-brown text-white rounded-full max-w-5xl mx-auto p-2 flex items-center justify-center gap-2 overflow-hidden"
   >
-    <ul
-      id="plate-nav"
-      class="px-6 py-3 swiper-wrapper h-auto w-auto flex gap-4 sm:justify-center overflow-x-auto whitespace-nowrap"
-    >
-      {
-        plates.map((plate) => (
-          <li class="swiper-slide !w-max min-w-fit flex-shrink-0">
-            <a
-              href={`#${plate.data.slug}`}
-              class="font-medium select-none whitespace-normal overflow-visible max-w-[150px] text-sm md:text-base"
-            >
-              {plate.data.prettyName}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    {
+      plates.map((plate) => (
+        <button
+          data-target={`#${plate.data.slug}`}
+          class="px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+        >
+          {plate.data.prettyName}
+        </button>
+      ))
+    }
   </nav>
 </div>
 
 <div class="grid grid-cols-1 gap-y-32">
   {
     plates.map((plate) => (
-      <div id={plate.data.slug} class="space-y-16 scroll-mt-20">
+      <div
+        id={plate.data.slug}
+        class="space-y-16 scroll-mt-20 transition-all duration-300 ease-in-out"
+      >
         <div class="flex flex-col items-center gap-2 max-w-lg mx-auto text-balance text-center">
-          <h3 class="h3 text-brown font-bold custom-bg-light-brown px-4 py-2 rounded-md">
+          <h3 class="h3 text-brown font-bold custom-bg-light-brown px-4 py-2 rounded-md shadow-md">
             {plate.data.prettyName}
           </h3>
           <p>{plate.data.description}</p>
@@ -74,66 +68,102 @@ const siteLangFormat = siteLang.replace("_", "-");
 </div>
 
 <script>
-  import Swiper from "swiper";
-  import "swiper/css";
+  document.addEventListener("DOMContentLoaded", () => {
+    // Add click event listeners to buttons
+    const buttons = document.querySelectorAll("nav button");
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetId = button.getAttribute("data-target");
 
-  document.addEventListener("astro:page-load", () => {
-    // Pass the CSS selector string directly to Swiper
-    new Swiper(".swiper-plates", {
-      loop: false,
-      spaceBetween: 8, // Reduced spacing for smaller screens
-      slidesPerView: "auto",
-      freeMode: true, // Allow smooth scrolling without strict snapping
-      watchSlidesProgress: true, // Enable dynamic slide updates
+        // Ensure targetId is a valid string
+        if (!targetId) return;
+
+        const targetElement = document.querySelector(targetId);
+
+        // Remove active state from all sections
+        document.querySelectorAll(".space-y-16").forEach((section) => {
+          section.classList.remove("active-section");
+        });
+
+        // Add active state to the clicked section
+        if (targetElement) {
+          targetElement.classList.add("active-section");
+
+          // Calculate the scroll offset dynamically
+          const menuHeight = document.querySelector("nav")?.offsetHeight || 0; // Handle null case
+          const additionalPadding = 20; // Adjust as needed
+          const offsetTop =
+            targetElement.offsetTop - (menuHeight + additionalPadding);
+
+          // Scroll to the adjusted position
+          window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth",
+          });
+        }
+      });
     });
   });
 </script>
 
 <style>
-  /* Ensure the navigation container expands horizontally as needed */
-  #plate-nav {
-    overflow-x: auto;
-    scrollbar-width: thin; /* Optional: Reduce scrollbar size for better UX */
-    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+  /* Active section styling */
+  .active-section {
+    margin-top: 4rem; /* Add spacing above the active section */
+    padding-top: 2rem; /* Add padding for visual separation */
+    border-top: 2px solid #d4a373; /* Optional: Add a decorative border */
   }
 
-  /* Remove default scrollbar styling (if desired) */
-  #plate-nav::-webkit-scrollbar {
-    display: none;
+  /* Ensure prettyName is always visible */
+  h3.h3 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for emphasis */
   }
 
-  /* Allow items to wrap or scroll horizontally */
-  #plate-nav ul {
-    display: flex;
-    gap: 8px; /* Adjust spacing between items */
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    white-space: nowrap; /* Prevent wrapping */
+  /* Button styling */
+  nav button {
+    background: #f5f0e6;
+    color: rgb(23, 14, 2);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition:
+      transform 0.2s ease-in-out,
+      background-color 0.2s ease-in-out;
   }
 
-  /* Ensure individual items are flexible */
-  #plate-nav li {
-    flex-shrink: 0; /* Prevent shrinking */
-    min-width: fit-content; /* Allow items to take up necessary space */
+  nav button:hover,
+  nav button:focus {
+    transform: scale(1.1); /* Slight zoom effect on hover/focus */
+    background-color: #f8cf78; /* Lighter brownish background on hover/focus */
   }
 
-  /* Adjust link styling for better readability */
-  #plate-nav a {
-    max-width: none; /* Remove max-width constraint */
-    white-space: normal; /* Allow text to wrap if necessary */
-    overflow: visible; /* Prevent truncation */
+  /* Nav styling */
+  nav {
+    background-color: rgb(255, 255, 255);
+    border-radius: 50px; /* Rounded corners */
   }
 
-  /* Responsive adjustments for smaller screens */
+  /* Responsive adjustments */
   @media (max-width: 768px) {
-    #plate-nav a {
-      font-size: 0.875rem; /* Reduce font size for better fit */
-      max-width: 120px; /* Adjust max width for smaller screens */
+    nav button {
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
     }
 
-    #plate-nav ul {
-      gap: 4px; /* Reduce spacing between items */
+    nav {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* Ensure proper spacing for small screens */
+    .active-section {
+      margin-top: 6rem; /* Increase spacing for mobile */
+    }
+
+    /* Ensure prettyName is visible on smaller screens */
+    h3.h3 {
+      font-size: 1.25rem; /* Larger font size for better visibility */
+      padding: 0.75rem 1rem; /* More padding for readability */
     }
   }
 </style>
