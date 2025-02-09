@@ -281,8 +281,77 @@
 	
 
 
-
-
+        {
+            "id": 7,
+            "slug": "french-toast",
+            "prettyName": "French Toast",
+            "description": "Indulgent French toasts with various flavors and toppings.",
+            "plates": [
+                {
+                    "name": "Classic French Toast",
+                    "description": "Served with maple syrup, fresh berries, and soft ice cream.",
+                    "price": 10.9
+                },
+                {
+                    "name": "Tiramisu French Toast",
+                    "description": "Brioche French toast infused with coffee, layered with creamy mascarpone, dusted with cocoa, and served with fresh berries.",
+                    "price": 12.5
+                },
+                {
+                    "name": "Lotus & Banana Brûlée",
+                    "description": "Brioche French toast served with caramelized banana, Lotus Biscoff sauce, fresh berries, and soft ice cream.",
+                    "price": 12.9
+                },
+                {
+                    "name": "Pistachio French Toast",
+                    "description": "French toast filled with pistachio cream, served with fresh berries, pistachio sauce, and soft ice cream.",
+                    "price": 12.5
+                },
+                {
+                    "name": "Dubai Chocolate French Toast",
+                    "description": "Brioche French toast topped with Dubai chocolate, served with pistachio sauce.",
+                    "price": 13.9
+                },
+                {
+                    "name": "Pistachio Tiramisu French Toast",
+                    "description": "Rich coffee-soaked French toast layered with creamy pistachio mascarpone, topped with crushed pistachios.",
+                    "price": 13.9
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "slug": "signature-drinks",
+            "prettyName": "Signature Drinks",
+            "description": "Our exclusive signature drinks crafted for an unforgettable experience.",
+            "plates": [
+                {
+                    "name": "White Chocolate Matcha",
+                    "description": " ",
+                    "price": 6.9
+                },
+                {
+                    "name": "Kinder Bueno",
+                    "description": " ",
+                    "price": 6.9
+                },
+                {
+                    "name": "Oreo",
+                    "description": " ",
+                    "price": 6.9
+                },
+                {
+                    "name": "Reeses Peanut",
+                    "description": " ",
+                    "price": 6.9
+                },
+                {
+                    "name": "Biscoff",
+                    "description": " ",
+                    "price": 6.9
+                }
+            ]
+        },
 
     {
         "id": 6,
@@ -317,44 +386,7 @@
             }
         ]
     },
-    {
-        "id": 7,
-        "slug": "french-toast",
-        "prettyName": "French Toast",
-        "description": "Indulgent French toasts with various flavors and toppings.",
-        "plates": [
-            {
-                "name": "Classic French Toast",
-                "description": "Served with maple syrup, fresh berries, and soft ice cream.",
-                "price": 10.9
-            },
-            {
-                "name": "Tiramisu French Toast",
-                "description": "Brioche French toast infused with coffee, layered with creamy mascarpone, dusted with cocoa, and served with fresh berries.",
-                "price": 12.5
-            },
-            {
-                "name": "Lotus & Banana Brûlée",
-                "description": "Brioche French toast served with caramelized banana, Lotus Biscoff sauce, fresh berries, and soft ice cream.",
-                "price": 12.9
-            },
-            {
-                "name": "Pistachio French Toast",
-                "description": "French toast filled with pistachio cream, served with fresh berries, pistachio sauce, and soft ice cream.",
-                "price": 12.5
-            },
-            {
-                "name": "Dubai Chocolate French Toast",
-                "description": "Brioche French toast topped with Dubai chocolate, served with pistachio sauce.",
-                "price": 13.9
-            },
-            {
-                "name": "Pistachio Tiramisu French Toast",
-                "description": "Rich coffee-soaked French toast layered with creamy pistachio mascarpone, topped with crushed pistachios.",
-                "price": 13.9
-            }
-        ]
-    },
+    
     {
         "id": 8,
         "slug": "drinks",
@@ -438,39 +470,7 @@
             }
         ]
     },
-    {
-        "id": 9,
-        "slug": "signature-drinks",
-        "prettyName": "Signature Drinks",
-        "description": "Our exclusive signature drinks crafted for an unforgettable experience.",
-        "plates": [
-            {
-                "name": "White Chocolate Matcha",
-                "description": " ",
-                "price": 6.9
-            },
-            {
-                "name": "Kinder Bueno",
-                "description": " ",
-                "price": 6.9
-            },
-            {
-                "name": "Oreo",
-                "description": " ",
-                "price": 6.9
-            },
-            {
-                "name": "Reeses Peanut",
-                "description": " ",
-                "price": 6.9
-            },
-            {
-                "name": "Biscoff",
-                "description": " ",
-                "price": 6.9
-            }
-        ]
-    },
+    
     {
         "id": 10,
         "slug": "smoothies",
