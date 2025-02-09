@@ -52,7 +52,7 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
                   ? "noopener noreferrer"
                   : undefined
               }
-              class={`transition text-base/6 font-semibold hover:text-brand-green ${item.highlighted ? "menu-item-highlighted" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
+              class={`transition text-base/6 font-semibold hover:text-red ${item.highlighted ? "menu-item-highlighted" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
             >
               {item.name}
             </a>

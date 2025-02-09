@@ -8,7 +8,7 @@ export default {
 			},
 			colors: {
 				brand: {
-					green: "#157F71",
+					green: "#857b63",
 					red: "#DB1D00",
 				},
 			},
