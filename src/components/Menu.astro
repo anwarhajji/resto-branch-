@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { siteLang, siteCurrency } from "~/data/config";
+
 const plates = await getCollection("plates");
 const siteLangFormat = siteLang.replace("_", "-");
 ---
@@ -67,18 +68,21 @@ const siteLangFormat = siteLang.replace("_", "-");
   }
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
+<script client:load>
+  // Ensure the script runs immediately when the component is loaded
+  const setupMenu = () => {
     // Add click event listeners to buttons
     const buttons = document.querySelectorAll("nav button");
     buttons.forEach((button) => {
       button.addEventListener("click", () => {
         const targetId = button.getAttribute("data-target");
-
-        // Ensure targetId is a valid string
         if (!targetId) return;
 
         const targetElement = document.querySelector(targetId);
+        if (!targetElement) {
+          console.error(`Target element not found for ID: ${targetId}`);
+          return;
+        }
 
         // Remove active state from all sections
         document.querySelectorAll(".space-y-16").forEach((section) => {
@@ -86,24 +90,27 @@ const siteLangFormat = siteLang.replace("_", "-");
         });
 
         // Add active state to the clicked section
-        if (targetElement) {
-          targetElement.classList.add("active-section");
+        targetElement.classList.add("active-section");
 
-          // Calculate the scroll offset dynamically
-          const menuHeight = document.querySelector("nav")?.offsetHeight || 0; // Handle null case
-          const additionalPadding = 20; // Adjust as needed
-          const offsetTop =
-            targetElement.offsetTop - (menuHeight + additionalPadding);
+        // Calculate the scroll offset dynamically
+        const menuHeight = document.querySelector("nav")?.offsetHeight || 0;
+        const additionalPadding = 20; // Adjust as needed
+        const offsetTop =
+          targetElement.offsetTop - (menuHeight + additionalPadding);
 
-          // Scroll to the adjusted position
-          window.scrollTo({
-            top: offsetTop,
-            behavior: "smooth",
-          });
-        }
+        console.log("Scrolling to:", offsetTop);
+
+        // Scroll to the adjusted position
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
       });
     });
-  });
+  };
+
+  // Initialize the menu setup
+  setupMenu();
 </script>
 
 <style>
