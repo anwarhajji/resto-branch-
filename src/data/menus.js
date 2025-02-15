@@ -26,7 +26,7 @@ export const menuMain = [
     },
     {
         name: "Book",
-        url: "https://www.ubereats.com/gb/store/branche/xWRDFRXNTI-nfFikhQ4Feg?srsltid=AfmBOoqBDj3Yubu_UumdoJaFQ9Avjx6b6hWVKq4kk-zG4MlzQh4VsY-D",
+        url: "https://www.just-eat.co.uk/restaurants-branche-london-leyton/menu?utm_source=google&utm_medium=organic&utm_campaign=orderaction",
         highlighted: true,
     },
 ];

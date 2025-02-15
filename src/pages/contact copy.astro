@@ -1,0 +1,45 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Heading from "~/components/Heading.astro";
+import FormContact from "~/components/forms/FormContact.astro";
+import BranchInfo from "~/components/BranchInfo.astro";
+
+const branchHours = [
+  { day: "Saturday", time: "09:00–20:00" },
+  { day: "Sunday", time: "09:00–20:00" },
+  { day: "Monday", time: "08:00–20:00" },
+  { day: "Tuesday", time: "08:00–20:00" },
+  { day: "Wednesday", time: "08:00–20:00" },
+  { day: "Thursday", time: "08:00–20:00" },
+  { day: "Friday", time: "08:00–20:00" },
+];
+
+const privateHireInfo = {
+  description:
+    "branché has a beautiful space available for private hire. Whether it's a corporate event, birthday party, baby shower, or any other occasion, we love to host private events and look forward to working with you.",
+  capacity: "Seated or standing events for up to 40 guests",
+};
+---
+
+<Layout>
+  <Section>
+    <Heading>
+      <h2 slot="heading-title" class="font-black text-brand-green h2">
+        Contact
+      </h2>
+      <p slot="heading-content">
+        Get in touch with us for any questions or inquiries.
+      </p>
+    </Heading>
+    <!-- Use the BranchInfo Component -->
+    <div>
+      <BranchInfo
+        title="London Branch Hours"
+        hours={branchHours}
+        privateHireInfo={privateHireInfo}
+      />
+    </div>
+    <FormContact />
+  </Section>
+</Layout>

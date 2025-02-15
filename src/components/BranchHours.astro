@@ -1,0 +1,28 @@
+---
+// Define props for the BranchHours component
+const { title, hours } = Astro.props;
+---
+
+<section class="branch-hours bg-white rounded-lg shadow-md p-6">
+  <h2 class="text-2xl font-bold text-center text-brand-green mb-4">{title}</h2>
+
+  <!-- Display Branch Hours -->
+  <table class="w-full mx-auto">
+    <thead>
+      <tr>
+        <th class="py-2 text-left font-medium">Day</th>
+        <th class="py-2 text-left font-medium">Hours</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        hours.map((hour) => (
+          <tr class="border-t border-gray-200">
+            <td class="py-2">{hour.day}</td>
+            <td class="py-2">{hour.time}</td>
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</section>
