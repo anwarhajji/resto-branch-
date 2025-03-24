@@ -5,10 +5,11 @@ export default {
 		extend: {
 			fontFamily: {
 				inter: ["Inter", "sans-serif"],
+				'roboto': ['Roboto', 'sans-serif'],
 			},
 			colors: {
 				brand: {
-					green: "#857b63",
+					green: "#0a0702",
 					red: "#DB1D00",
 				},
 			},
