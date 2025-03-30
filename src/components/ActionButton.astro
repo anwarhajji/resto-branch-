@@ -1,0 +1,23 @@
+---
+// src/components/ActionButton.astro
+interface Props {
+  text: string;
+  href?: string; // URL the button links to
+  className?: string; // Allow passing additional classes
+}
+
+const { text, href = "#", className } = Astro.props; // Default href to '#' if not provided
+
+// Use an anchor tag <a> if href is provided and not '#', otherwise use a button tag.
+// For simplicity here, we'll always use an <a> tag as visually they are just links styled as buttons.
+---
+
+<a
+  href={href}
+  class:list={[
+    "inline-block border border-neutral-800 rounded-full px-6 py-2 text-sm font-medium text-neutral-800 hover:bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-500 transition-colors",
+    className, // Merge additional classes if provided
+  ]}
+>
+  {text}
+</a>

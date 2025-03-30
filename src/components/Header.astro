@@ -1,34 +1,58 @@
 ---
+// src/components/Header.astro
 import { menuMain } from "~/data/menus.js";
+
 const rmTrailingSlash = (path: string): string => {
   return path.endsWith("/") && path.length > 1
     ? path.slice(0, path.length - 1)
     : path;
 };
+
 const pathname = rmTrailingSlash(Astro.url.pathname);
+
+// Define base classes for reuse
+const baseLinkClasses = "transition text-base/6 font-semibold";
+// UPDATED: Hover is now black and bold
+const hoverClasses = "hover:text-black hover:font-bold";
+// Custom class names remain the same, but their definitions in <style> will change
+const activeClasses = "menu-item-active";
+const highlightedClasses = "menu-item-highlighted";
+
+// Mobile specific base classes
+const mobileBaseLinkClasses = "block py-2 text-center font-semibold text-3xl";
+const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
 ---
 
-<header x-data="{ open: false }" @keydown.window.escape="open = false">
+<header
+  x-data="{ open: false }"
+  @keydown.window.escape="open = false"
+  class="relative z-30"
+>
   <div class="container py-6">
     <nav class="flex items-center justify-between" aria-label="Global">
+      {/* Logo */}
       <a href="/" class="-m-1.5 p-1.5 flex items-center">
-        <img src="/logo.png" alt="Logo" class="h-15 w-auto" />
+        <img src="/logo.png" alt="Branche Logo" class="h-15 w-auto" />
       </a>
+
+      {/* Mobile Menu Button */}
       <div class="flex lg:hidden">
         <button
           type="button"
-          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-brown"
+          {/* Kept text-brown as requested */}
           @click="open = true"
+          aria-label="Open main menu"
+          aria-expanded="false"
+          :aria-expanded="open.toString()"
         >
-          <span class="sr-only">Open main menu</span>
           <svg
-            class="size-8 text-brown"
+            class="size-8"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
             aria-hidden="true"
-            data-slot="icon"
           >
             <path
               stroke-linecap="round"
@@ -37,59 +61,132 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
           </svg>
         </button>
       </div>
+
+      {/* Desktop Menu */}
       <div class="hidden lg:flex lg:gap-x-12 lg:items-center">
         {
           menuMain.map((item) => (
-            <a
-              href={item.url}
-              target={
-                item.url.startsWith("http") && !item.url.startsWith("/")
-                  ? "_blank"
-                  : undefined
-              }
-              rel={
-                item.url.startsWith("http") && !item.url.startsWith("/")
-                  ? "noopener noreferrer"
-                  : undefined
-              }
-              class={`transition text-base/6 font-semibold hover:text-red ${item.highlighted ? "menu-item-highlighted" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
-            >
-              {item.name}
-            </a>
+            <>
+              {item.submenu ? (
+                // --- Desktop Dropdown ---
+                <div class="relative group">
+                  <a
+                    href={item.url}
+                    class:list={[
+                      baseLinkClasses,
+                      hoverClasses, // Apply updated hover classes
+                      "inline-flex items-center gap-x-1",
+                      item.highlighted && highlightedClasses,
+                      pathname === rmTrailingSlash(item.url) && activeClasses,
+                    ]}
+                    aria-haspopup="true"
+                  >
+                    {item.name}
+                    {/* Dropdown Arrow - UPDATED hover color */}
+                    <svg
+                      class="h-5 w-5 text-gray-400 group-hover:text-black transition-colors"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </a>
+                  {/* Dropdown Panel */}
+                  <div class="absolute -left-8 top-full z-20 mt-3 w-screen max-w-[12rem] overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-gray-900/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
+                    <div class="p-2">
+                      {item.submenu.map((subItem) => (
+                        <a
+                          href={subItem.url}
+                          class:list={[
+                            "block rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900 hover:bg-gray-100",
+                            // UPDATED: Active subitem style
+                            pathname === rmTrailingSlash(subItem.url) &&
+                              "bg-gray-100 text-black font-bold",
+                          ]}
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                // --- Regular Desktop Link ---
+                <a
+                  href={item.url}
+                  target={item.url.startsWith("http") ? "_blank" : "_self"}
+                  rel={
+                    item.url.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  class:list={[
+                    baseLinkClasses,
+                    hoverClasses, // Apply updated hover classes
+                    item.highlighted && highlightedClasses,
+                    pathname === rmTrailingSlash(item.url) && activeClasses,
+                  ]}
+                >
+                  {item.name}
+                </a>
+              )}
+            </>
           ))
         }
       </div>
     </nav>
 
-    <!-- Mobile Menu -->
+    {/* Mobile Menu Panel */}
     <div
       class="lg:hidden"
       x-ref="dialog"
       x-show="open"
       x-cloak
       aria-modal="true"
+      role="dialog"
     >
+      {/* Overlay */}
       <div
-        class="fixed inset-0 z-50 w-full overflow-y-auto bg-white px-8 py-6"
         x-show="open"
-        x-transition:enter="transition ease-out"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
+        x-transition.opacity.duration.300ms
+        class="fixed inset-0 z-40 bg-black/30"
+        @click="open = false"
+      >
+      </div>
+
+      {/* Panel Content */}
+      <div
+        class="fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto bg-white px-8 py-6"
+        x-show="open"
+        x-transition:enter="transition ease-in-out duration-300 transform"
+        x-transition:enter-start="translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition ease-in-out duration-300 transform"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="translate-x-full"
         x-cloak
       >
+        {/* Mobile Header inside panel */}
         <div class="flex items-center justify-between">
-          <a href="/" class="-m-1.5 p-1.5 flex items-center">
-            <img src="/logo.png" alt="Logo" class="h-15 w-auto" />
+          <a
+            href="/"
+            class="-m-1.5 p-1.5 flex items-center"
+            @click="open = false"
+          >
+            <img src="/logo.png" alt="Branche Logo" class="h-15 w-auto" />
           </a>
           <button
             type="button"
             class="-m-2.5 p-2.5 text-brand-red"
+            {/* Kept text-brand-red */}
             @click="open = false"
+            aria-label="Close menu"
           >
-            <span class="sr-only">Close menu</span>
             <svg
               class="size-8"
               fill="none"
@@ -97,7 +194,6 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
               stroke-width="2"
               stroke="currentColor"
               aria-hidden="true"
-              data-slot="icon"
             >
               <path
                 stroke-linecap="round"
@@ -106,28 +202,54 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
             </svg>
           </button>
         </div>
-        <div class="mt-6 flow-root">
+
+        {/* Mobile Menu Links */}
+        <div class="mt-16 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
-            <div class="space-y-2 py-6 mt-16">
+            <div class="space-y-4 py-6">
               {
                 menuMain.map((item) => (
-                  <a
-                    @click="open = false"
-                    href={item.url}
-                    target={
-                      item.url.startsWith("http") && !item.url.startsWith("/")
-                        ? "_blank"
-                        : undefined
-                    }
-                    rel={
-                      item.url.startsWith("http") && !item.url.startsWith("/")
-                        ? "noopener noreferrer"
-                        : undefined
-                    }
-                    class={`block py-2 text-center font-semibold text-3xl ${item.highlighted ? "menu-item-highlighted w-max mx-auto !px-8 !py-2" : ""} ${pathname === item.url ? "menu-item-active" : ""}`}
-                  >
-                    {item.name}
-                  </a>
+                  <div key={item.name}>
+                    {/* --- Parent Mobile Link --- */}
+                    <a
+                      href={item.url}
+                      target={item.url.startsWith("http") ? "_blank" : "_self"}
+                      rel={
+                        item.url.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      @click={!item.submenu && "open = false"}
+                      class:list={[
+                        mobileBaseLinkClasses,
+                        item.highlighted && highlightedClasses,
+                        item.highlighted && mobileHighlightedClasses,
+                        pathname === rmTrailingSlash(item.url) && activeClasses, // Uses updated active class definition
+                      ]}
+                    >
+                      {item.name}
+                    </a>
+
+                    {/* --- Submenu Mobile Links (if exist) --- */}
+                    {item.submenu && (
+                      <div class="mt-2 space-y-2 pl-6">
+                        {item.submenu.map((subItem) => (
+                          <a
+                            href={subItem.url}
+                            @click="open = false"
+                            class:list={[
+                              "block text-center text-xl font-medium py-1",
+                              "hover:text-black hover:font-bold", // UPDATED hover style
+                              pathname === rmTrailingSlash(subItem.url) &&
+                                activeClasses, // Uses updated active class definition
+                            ]}
+                          >
+                            {subItem.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))
               }
             </div>
@@ -136,4 +258,64 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
       </div>
     </div>
   </div>
+
+  {/* Add Styles for Custom Classes */}
+  <style>
+    .menu-item-highlighted {
+      /* UPDATED: Highlighted style is now black */
+      background-color: black; /* Black background */
+      color: white; /* White text for contrast */
+      padding: 0.5rem 1.5rem;
+      border-radius: 9999px; /* full */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-weight: 600; /* Semibold */
+    }
+    .menu-item-highlighted:hover {
+      background-color: #333; /* Slightly lighter black on hover */
+      color: white;
+    }
+
+    .menu-item-active {
+      /* UPDATED: Active style is now black and bold */
+      color: black;
+      font-weight: 700; /* Bold */
+    }
+
+    /* Minor adjustment for active item in desktop dropdown to match */
+    .group-hover\:visible a.bg-gray-100.text-black.font-bold {
+      /* Style is now applied directly via class:list, ensure consistency if needed */
+      /* color: black; */ /* Already set */
+      /* font-weight: 700; */ /* Already set */
+    }
+
+    /* Mobile specific active style inherits from .menu-item-active */
+    /* .lg\:hidden .menu-item-active { */
+    /* color: black; */ /* Inherited */
+    /* font-weight: 700; */ /* Inherited */
+    /* } */
+
+    /* Fix for logo height if 'h-15' is not a standard Tailwind class */
+    .h-15 {
+      height: 3.75rem; /* 60px */
+    }
+
+    /* Ensure text-brown is defined if not in Tailwind config */
+    .text-brown {
+      /* Use your actual brown color here if needed */
+      /* Example: color: #A0522D; */
+      color: black; /* Assuming you want the hamburger icon black now too */
+    }
+    /* Ensure text-brand-red is defined */
+    .text-brand-red {
+      color: #dc2626; /* Example: Tailwind red-600 */
+      /* Or use your specific red */
+    }
+
+    /* --- Removed brand-green CSS variable definition --- */
+
+    /* --- Inline hover classes handle the hover state directly --- */
+    /* .hover\:text-brand-green:hover { ... } */
+
+    /* .menu-item-active rule now defines the active color */
+  </style>
 </header>

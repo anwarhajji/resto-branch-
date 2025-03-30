@@ -1,0 +1,134 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ActionButton from "../components/ActionButton.astro";
+// Assuming HOM1.jpg is a suitable placeholder image for Branché
+import heroImage from "~/assets/images/HOM1.jpg";
+
+// Using the processed image source from the import
+const heroImageUrl = heroImage.src;
+// Placeholder email - replace if you have the correct one
+const contactEmail = "info@branchelondon.com"; // Adjusted placeholder
+const restaurantName = "Branché";
+const restaurantLocation = "London"; // Added for clarity in title
+const restaurantAddress = "240 High Rd. Leyton, London E10 5PW, Royaume-Uni";
+const restaurantPhone = "+44 20 3691 4785";
+const restaurantPhoneLink = "tel:+442036914785";
+---
+
+<Layout
+  title={`${restaurantName} ${restaurantLocation} - French Restaurant & Bar`}
+>
+  <div class="container mx-auto px-4 pt-8 pb-16">
+    <h1 class="text-4xl md:text-5xl font-light text-center mb-8 tracking-wider">
+      {restaurantName}
+    </h1>
+
+    {/* Hero Image Section */}
+    <div class="mb-12 md:mb-16 overflow-hidden">
+      <img
+        src={heroImageUrl}
+        alt={`Interior view of ${restaurantName} restaurant in ${restaurantLocation}`}
+        class="w-full h-[400px] object-cover object-center"
+        loading="lazy"
+        width={heroImage.width}
+        height={heroImage.height}
+      />
+    </div>
+
+    {/* Main Content Grid */}
+    <div
+      class="grid grid-cols-1 md:grid-cols-3 gap-x-8 lg:gap-x-12 gap-y-10 text-sm text-neutral-800"
+    >
+      {/* Column 1: Location & Contact / Private Hire (Remains the same) */}
+      <div class="space-y-8 text-center md:text-left">
+        <section>
+          <h2 class="text-base font-semibold mb-3">Location & Contact</h2>
+          <div class="space-y-1">
+            <p>{restaurantAddress}</p>
+            <p class="pt-2">
+              <a href={restaurantPhoneLink} class="hover:underline"
+                >{restaurantPhone}</a
+              >
+            </p>
+            <p>
+              <a href={`mailto:${contactEmail}`} class="hover:underline"
+                >{contactEmail}</a
+              >
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-base font-semibold mb-3">Private Hire</h2>
+          <p class="mb-5">
+            Interested in hosting a party or special event with us? Please get
+            in touch via the enquiry button below or email us for details.
+          </p>
+          <ActionButton text="Private Hire Enquiry" href="/private-events" />
+        </section>
+      </div>
+
+      {/* --- UPDATED COLUMN 2 START --- */}
+      {/* Column 2: Opening Hours / Brunch Hours */}
+      <div class="space-y-8 text-center md:text-left">
+        {/* Updated Opening Hours */}
+        <section>
+          <h2 class="text-base font-semibold mb-3">Opening Hours</h2>
+          <ul
+            class="space-y-1 list-none inline-block text-left mx-auto md:mx-0 md:inline md:text-left"
+          >
+            <li>Mon - Fri: 8am - 8pm</li>
+            {/* Grouped Mon-Fri */}
+            <li>Sat - Sun: 9am - 8pm</li>
+            {/* Grouped Sat-Sun */}
+          </ul>
+        </section>
+
+        {/* Added Brunch Hours Section */}
+        <section>
+          <h2 class="text-base font-semibold mb-3">Brunch Hours</h2>
+          <ul
+            class="space-y-1 list-none inline-block text-left mx-auto md:mx-0 md:inline md:text-left"
+          >
+            <li>Mon - Fri: 8am - 8pm</li>
+            {/* Grouped Mon-Fri */}
+            <li>Sat - Sun: 9am - 8pm</li>
+            {/* Grouped Sat-Sun */}
+          </ul>
+          {
+            /* Optional: Add a note like <p class="mt-2 text-xs text-neutral-600">Brunch served throughout opening hours.</p> */
+          }
+        </section>
+      </div>
+      {/* --- UPDATED COLUMN 2 END --- */}
+
+      {/* Column 3: Reservations & Walk-ins (Remains the same) */}
+      <div class="space-y-8 text-center md:text-left">
+        <section>
+          <h2 class="text-base font-semibold mb-3">Reservations & Walk-ins</h2>
+          <div class="space-y-4">
+            <p>
+              We accept reservations for lunch and dinner. Please use the
+              booking link below or call us.
+            </p>
+            <p>
+              <strong class="font-medium">Walk-ins:</strong> We always keep space
+              available for walk-in guests at the bar and some tables. We'll do our
+              best to accommodate you.
+            </p>
+            <p>
+              <strong class="font-medium">Large Groups:</strong> For parties of 8
+              or more, please contact us directly via email at <a
+                href={`mailto:${contactEmail}`}
+                class="hover:underline">{contactEmail}</a
+              > to discuss arrangements.
+            </p>
+          </div>
+          <div class="mt-6">
+            <ActionButton text="Book a Table" href="/book" />
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
