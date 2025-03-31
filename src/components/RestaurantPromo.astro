@@ -44,17 +44,20 @@ import GroupImage from "../assets/images/HOM2.jpg"; // Update path to your image
       Your Brunch Haven in the Heart of Leyton
     </h2>
 
-    <div class="mx-auto mb-6 w-full max-w-5xl overflow-hidden rounded-lg">
-      <Picture
-        class:list={"w-full"}
-        src={GroupImage}
-        widths={[400, 800, 1200, 1600]}
-        sizes="(max-width: 1200px) 100vw, 1200px"
-        height={400}
-        formats={["avif", "webp"]}
-        alt="Table pour un grand groupe avec plusieurs plats à partager"
-        loading={"lazy"}
-      />
+    <!-- <div class="mx-auto mb-6 w-full max-w-5xl overflow-hidden rounded-lg"> -->
+    <div class="flex justify-center mb-6">
+      <div class="w-[400px] h-[200px] overflow-hidden rounded-3xl">
+        <!-- Added rounded-lg here -->
+        <Picture
+          class="w-full h-full object-cover"
+          src={GroupImage}
+          widths={[400, 800, 1200, 1600]}
+          sizes="(max-width: 1200px) 100vw, 1200px"
+          formats={["avif", "webp"]}
+          alt="Table pour un grand groupe avec plusieurs plats à partager"
+          loading="lazy"
+        />
+      </div>
     </div>
 
     <div class="mx-auto mb-6 max-w-xl md:max-w-2xl">

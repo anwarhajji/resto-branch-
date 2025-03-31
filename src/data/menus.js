@@ -28,11 +28,11 @@ export const menuMain = [
         submenu: [
             {
                 name: "Leyton", // Name of the first location
-                url: "Leyton", // URL for the first location page
+                url: "/Leyton", // URL for the first location page
             },
             {
                 name: "Location 2", // Name of the second location
-                url: "location2", // URL for the second location page
+                url: "/location2", // URL for the second location page
             },
             // You can add more location objects here if needed in the future
         ]
