@@ -4,9 +4,10 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				inter: ["Inter", "sans-serif"],
-				'roboto': ['Roboto', 'sans-serif'],
-			},
+				sans: ['Roboto', 'sans-serif'], // Make Roboto the default sans font
+				inter: ["Inter", "sans-serif"], // Keep Inter as an optional font
+				// Remove the separate 'roboto' entry since it's now the default
+			  },
 			colors: {
 				brand: {
 					green: "#0a0702",

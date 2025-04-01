@@ -13,22 +13,26 @@ import WideImage from "~/components/WideImage.astro";
 import ReviewSlider from "~/components/ReviewSlider.astro";
 
 // Images
-import PizzaHero from "~/assets/images/pizza-hero.png";
-import HeroIMage from "~/assets/images/her4.png";
+import PizzaHero from "~/assets/images/MENU1.jpg";
+import HeroIMage from "~/assets/images/HOM1.jpg";
 
-import Pizza from "~/assets/images/pizza.png";
-import Spaghetti from "~/assets/images/spaghetti.png";
-import Fish from "~/assets/images/fish.png";
+import Pizza from "~/assets/images/CREM.jpg";
+import Spaghetti from "~/assets/images/H4.jpg";
+import Fish from "~/assets/images/DESST3.jpg";
 import DecorativeImage1 from "~/assets/images/pexels-shvetsa-5953523.jpg";
 import DecorativeImage from "~/assets/images/WIDE1.jpg";
 
 import reviewAuthors from "~/assets/images/review-authors.png";
-import Dessert from "~/assets/images/dessert.png";
+import Dessert from "~/assets/images/frenchtacos.jpg";
 import Mussels from "~/assets/images/mussels2.png";
+import RestaurantPromo from "../components/RestaurantPromo.astro";
 ---
 
 <Layout title="Home" pageTitle="Home" description="Welcome to our restaurant!">
+  <RestaurantPromo />
+  <!--
   <Section class:list={"bg-white"}>
+    
     <Hero>
       <div slot="hero-content-left" class="prose max-w-none max-lg:order-1">
         <Badge title="Welcome to Branché" />
@@ -46,7 +50,11 @@ import Mussels from "~/assets/images/mussels2.png";
         <span class="text-brand-green font-medium">✔ We also deliver</span>
 
         <div class="mt-8 flex items-center gap-x-8">
-          <Button url="/book">Book now</Button>
+          <Button
+            url="https://www.ubereats.com/gb/store/branche/xWRDFRXNTI-nfFikhQ4Feg?srsltid=AfmBOoqBDj3Yubu_UumdoJaFQ9Avjx6b6hWVKq4kk-zG4MlzQh4VsY-D"
+            target="_blank"
+            rel="noopener noreferrer">Book now</Button
+          >
           <ButtonCallUs />
         </div>
       </div>
@@ -56,14 +64,14 @@ import Mussels from "~/assets/images/mussels2.png";
           src={HeroIMage}
           height={600}
           formats={["avif", "webp"]}
-          alt="A description of my image."
+          alt="branché."
           loading={"eager"}
           fetchpriority={"high"}
         />
       </div>
     </Hero>
   </Section>
-
+  -->
   <WideImage
     image={DecorativeImage}
     alt="Just an image"
@@ -92,11 +100,12 @@ import Mussels from "~/assets/images/mussels2.png";
             formats={["avif", "webp"]}
             alt="A description of my image."
           />
-          <h3 class="h4 mt-0 font-black">Pasta &amp; Spaghetti</h3>
+          <h3 class="h4 mt-0 font-black">Our best seller iced coffees!</h3>
           <p>
-            Pasta is a staple of Italian cuisine, with a rich history dating
-            back centuries. It comes in various shapes and sizes, each suited to
-            different sauces and preparations.
+            Savor the magic of a flaky, golden croissant filled with your choice
+            of ice cream, topped with silky pistachio cream and rich milk
+            chocolate. A perfect blend of warm, buttery pastry and cool, creamy
+            indulgence. Treat yourself to a moment of pure delight!
           </p>
         </div>
       </div>
@@ -109,11 +118,14 @@ import Mussels from "~/assets/images/mussels2.png";
             formats={["avif", "webp"]}
             alt="A description of my image."
           />
-          <h3 class="h4 mt-0 font-black">Pasta &amp; Spaghetti</h3>
+          <h3 class="h4 mt-0 font-black">French toast</h3>
           <p>
-            Pasta is a staple of Italian cuisine, with a rich history dating
-            back centuries. It comes in various shapes and sizes, each suited to
-            different sauces and preparations.
+            combines the best of both worlds with its crispy, caramelized
+            exterior and buttery flaky interior. Drizzled with your choice of
+            decadent chocolate milk or velvety pistachio cream, this dessert
+            offers a perfect balance of sweetness and texture. Indulge in this
+            innovative creation that redefines classic pastry traditions for a
+            truly unforgettable experience..
           </p>
         </div>
       </div>
@@ -126,11 +138,11 @@ import Mussels from "~/assets/images/mussels2.png";
             formats={["avif", "webp"]}
             alt="A description of my image."
           />
-          <h3 class="h4 mt-0 font-black">Pasta &amp; Spaghetti</h3>
+          <h3 class="h4 mt-0 font-black">A Space to Breathe and Belong</h3>
           <p>
-            Pasta is a staple of Italian cuisine, with a rich history dating
-            back centuries. It comes in various shapes and sizes, each suited to
-            different sauces and preparations.
+            Step into our serene, sunlit cafe and leave the hustle of the city
+            behind. Inspired by the relaxed elegance of the French Riviera, our
+            interiors are designed to soothe and inspire.
           </p>
         </div>
       </div>
@@ -140,22 +152,17 @@ import Mussels from "~/assets/images/mussels2.png";
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose lg:order-2">
-        <h1 class="font-black">Pizza</h1>
+        <h1 class="font-black">
+          Our Promise: Fresh, Thoughtful, and Inclusive
+        </h1>
 
         <p>
-          Pizza is a beloved dish that originated in Italy and has since become
-          a global sensation. Its versatility allows for endless combinations of
-          toppings, from classic margherita with fresh tomatoes, mozzarella, and
-          basil, to more adventurous options like barbecue chicken or vegan
-          cheese.
-        </p>
-
-        <p>
-          Whether enjoyed at a cozy pizzeria or delivered to your doorstep,
-          pizza brings people together and satisfies cravings like no other
-          food. Beyond its delicious taste, pizza also holds cultural
-          significance. It is often associated with gatherings, celebrations,
-          and comfort.
+          At branché, we offer a thoughtfully curated brunch menu that brings
+          together the best of comfort and sophistication, perfect for any
+          occasion. Inspired by my love for fresh, simple ingredients and the
+          desire to create a space where food feels like a hug, our menu
+          features a blend of classic favorites and innovative dishes, all made
+          with the utmost care and attention to details.
         </p>
 
         <div class="mt-8">
@@ -187,7 +194,7 @@ import Mussels from "~/assets/images/mussels2.png";
       </div>
     </Hero>
   </Section>
-
+  <!--
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose max-w-none max-lg:order-1">
@@ -220,9 +227,9 @@ import Mussels from "~/assets/images/mussels2.png";
       </div>
     </Hero>
   </Section>
-
+-->
   <!-- Reviews -->
-  <Section class:list={"bg-brand-red/20 relative"}>
+  <Section class:list={"custom-bg-light-brown relative"} id="reviews">
     <div class="py-16">
       <Hero>
         <div slot="hero-content-left" class="prose max-w-none order-2">
@@ -276,7 +283,7 @@ import Mussels from "~/assets/images/mussels2.png";
     </svg>
   </Section>
 
-  <!-- Desserts -->
+  <!-- Desserts
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose max-w-none order-2">
@@ -316,18 +323,18 @@ import Mussels from "~/assets/images/mussels2.png";
       </div>
     </Hero>
   </Section>
-
+-->
   <!-- Contact -->
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose max-w-none">
-        <Badge color="red" title="benvenuto" />
+        <Badge color="red" title="Join Us at Branché" />
         <h2 slot="heading-title" class="font-black text-brand-red h2 my-4">
           Drop by and say hello
         </h2>
         <div slot="heading-content">
           <p>
-            We're located in the heart of the city, just a stone's throw away
+            We're located in the heart of the Leyton , just a stone's throw away
             from the main square. Our restaurant is the perfect place to enjoy a
             delicious meal with friends and family.
           </p>
@@ -337,7 +344,7 @@ import Mussels from "~/assets/images/mussels2.png";
           </span>
 
           <div class="mt-8">
-            <Button color="red" url="/book">Book a table</Button>
+            <Button color="red" url="/menu">Menu</Button>
           </div>
         </div>
       </div>

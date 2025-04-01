@@ -9,13 +9,13 @@ const siteLangFormat = siteLang.replace("_", "-");
 <!-- Rounded Menu -->
 <div class="mb-20 sticky top-8 z-10">
   <nav
-    class="bg-white text-white rounded-full max-w-5xl mx-auto p-2 flex items-center justify-center gap-2 overflow-hidden"
+    class="bg-brown text-white rounded-full max-w-5xl mx-auto p-2 flex items-center justify-center gap-2 overflow-hidden"
   >
     {
       plates.map((plate) => (
         <button
           data-target={`#${plate.data.slug}`}
-          class="px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2" /* focus:ring-white works well with black buttons */
+          class="px-4 py-2 rounded-full focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
         >
           {plate.data.prettyName}
         </button>
@@ -32,7 +32,7 @@ const siteLangFormat = siteLang.replace("_", "-");
         class="space-y-16 scroll-mt-20 transition-all duration-300 ease-in-out"
       >
         <div class="flex flex-col items-center gap-2 max-w-lg mx-auto text-balance text-center">
-          <h3 class="h3 text-white font-bold custom-bg-light-brown px-4 py-2 rounded-md shadow-md">
+          <h3 class="h3 text-black font-bold custom-bg-light-brown px-4 py-2 rounded-md shadow-md">
             {plate.data.prettyName}
           </h3>
           <p>{plate.data.description}</p>
@@ -114,56 +114,47 @@ const siteLangFormat = siteLang.replace("_", "-");
 </script>
 
 <style>
-  /* Active section styling (Unchanged) */
+  /* Active section styling */
   .active-section {
     margin-top: 4rem; /* Add spacing above the active section */
     padding-top: 2rem; /* Add padding for visual separation */
     border-top: 2px solid #d4a373; /* Optional: Add a decorative border */
   }
 
-  /* Ensure prettyName is always visible (Unchanged) */
+  /* Ensure prettyName is always visible */
   h3.h3 {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for emphasis */
   }
 
-  /* === MODIFIED BUTTON STYLING === */
+  /* Button styling */
   nav button {
-    /* background: #f5f0e6; */ /* Old background */
-    background-color: rgb(92, 92, 92); /* New: Black background */
-    /* color: rgb(23, 14, 2); */ /* Old text color */
-    color: white; /* New: White text */
+    background: #f5f0e6;
+    color: rgb(23, 14, 2);
     border: none;
     cursor: pointer;
     font-weight: bold;
     transition:
       transform 0.2s ease-in-out,
       background-color 0.2s ease-in-out;
-    /* Padding and border-radius are handled by Tailwind classes `px-4 py-2 rounded-full` on the button element */
   }
 
   nav button:hover,
   nav button:focus {
-    transform: scale(1.1); /* Keep zoom effect */
-    /* background-color: #f8cf78; */ /* Old hover background */
-    background-color: #333; /* New: Dark gray background on hover/focus */
-    /* Text color remains white (inherited or explicitly set if needed) */
+    transform: scale(1.1); /* Slight zoom effect on hover/focus */
+    background-color: #f8cf78; /* Lighter brownish background on hover/focus */
   }
-  /* === END MODIFIED BUTTON STYLING === */
 
-  /* Nav styling (Background kept white as per original code, but can be changed if needed) */
+  /* Nav styling */
   nav {
     background-color: rgb(255, 255, 255);
     border-radius: 50px; /* Rounded corners */
-    /* text-white class removed from nav element itself as buttons now handle their text color */
-    /* Note: The `focus:ring-offset-2` on buttons will use this nav background color for the offset */
   }
 
-  /* Responsive adjustments (Unchanged) */
+  /* Responsive adjustments */
   @media (max-width: 768px) {
-    /* Button styles cascade, so only size/padding adjustments needed here */
     nav button {
       font-size: 0.875rem;
-      padding: 0.5rem 1rem; /* Tailwind classes might override this, ensure consistency if needed */
+      padding: 0.5rem 1rem;
     }
 
     nav {
