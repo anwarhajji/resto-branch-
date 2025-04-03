@@ -77,82 +77,10 @@ import RestaurantPromo from "../components/RestaurantPromo.astro";
     alt="Just an image"
     class:list={"aspect-video lg:aspect-[16/7]"}
   />
-
-  <Section class:list={"bg-white"}>
-    <Heading>
-      <h2 slot="heading-title" class="font-black text-brand-brown h2">
-        A Taste of the French Riviera
-      </h2>
-      <p slot="heading-content">
-        Our menu is a love letter to the flavors of Provence, reimagined for the
-        modern brunch lover. From our iconic Croissant Avocado Benedict to
-        fluffy pancakes, vibrant grain bowls, and artisanal pastries, every dish
-        is crafted with care and creativity..
-      </p>
-    </Heading>
-
-    <Grid>
-      <div slot="grid-content-1">
-        <div class="flex flex-col items-center prose text-center">
-          <Picture
-            class:list={"not-prose w-full h-auto"}
-            src={Pizza}
-            formats={["avif", "webp"]}
-            alt="A description of my image."
-          />
-          <h3 class="h4 mt-0 font-black">Our best seller iced coffees!</h3>
-          <p>
-            Savor the magic of a flaky, golden croissant filled with your choice
-            of ice cream, topped with silky pistachio cream and rich milk
-            chocolate. A perfect blend of warm, buttery pastry and cool, creamy
-            indulgence. Treat yourself to a moment of pure delight!
-          </p>
-        </div>
-      </div>
-
-      <div slot="grid-content-2">
-        <div class="flex flex-col items-center prose text-center">
-          <Picture
-            class:list={"not-prose w-full h-auto"}
-            src={Spaghetti}
-            formats={["avif", "webp"]}
-            alt="A description of my image."
-          />
-          <h3 class="h4 mt-0 font-black">French toast</h3>
-          <p>
-            combines the best of both worlds with its crispy, caramelized
-            exterior and buttery flaky interior. Drizzled with your choice of
-            decadent chocolate milk or velvety pistachio cream, this dessert
-            offers a perfect balance of sweetness and texture. Indulge in this
-            innovative creation that redefines classic pastry traditions for a
-            truly unforgettable experience..
-          </p>
-        </div>
-      </div>
-
-      <div slot="grid-content-3">
-        <div class="flex flex-col items-center prose text-center">
-          <Picture
-            class:list={"not-prose w-full h-auto"}
-            src={Fish}
-            formats={["avif", "webp"]}
-            alt="A description of my image."
-          />
-          <h3 class="h4 mt-0 font-black">A Space to Breathe and Belong</h3>
-          <p>
-            Step into our serene, sunlit cafe and leave the hustle of the city
-            behind. Inspired by the relaxed elegance of the French Riviera, our
-            interiors are designed to soothe and inspire.
-          </p>
-        </div>
-      </div>
-    </Grid>
-  </Section>
-
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose lg:order-2">
-        <h1 class="font-black">
+        <h1 class="font-black text-brand-green">
           Our Promise: Fresh, Thoughtful, and Inclusive
         </h1>
 
@@ -166,7 +94,7 @@ import RestaurantPromo from "../components/RestaurantPromo.astro";
         </p>
 
         <div class="mt-8">
-          <Button url="/menu" color="red">
+          <Button url="/menu">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"
@@ -329,7 +257,7 @@ import RestaurantPromo from "../components/RestaurantPromo.astro";
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose max-w-none">
-        <Badge color="red" title="Join Us at Branché" />
+        <Badge color="dark-brown" title="Join Us at branché" />
         <h2 slot="heading-title" class="font-black h2 my-4">
           Drop by and say hello
         </h2>

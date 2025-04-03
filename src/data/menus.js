@@ -38,7 +38,7 @@ export const menuMain = [
         ]
     },
     {
-        name: "Book",
+        name: "Order",
         // Make sure this booking link is appropriate for all locations or a general booking portal
         url: "https://www.just-eat.co.uk/restaurants-branche-london-leyton/menu?utm_source=google&utm_medium=organic&utm_campaign=orderaction",
         highlighted: true,
