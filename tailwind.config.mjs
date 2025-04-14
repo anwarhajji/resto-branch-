@@ -10,7 +10,7 @@ export default {
 			  },
 			colors: {
 				brand: {
-					green: "#0a0702",
+					green: "#0a0600",
 					red: "#DB1D00",
 				},
 			},

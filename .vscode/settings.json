@@ -3,8 +3,8 @@
     "html.format.contentUnformatted": "pre,code,textarea",
     "html.format.unformatted": "textarea",
     "workbench.colorCustomizations": {
-        "activityBar.background": "#332E07",
-        "titleBar.activeBackground": "#48400A",
-        "titleBar.activeForeground": "#FCFAEB"
+        "activityBar.background": "#332E17",
+        "titleBar.activeBackground": "#484020",
+        "titleBar.activeForeground": "#FCFBF8"
     }
 }

@@ -12,7 +12,7 @@ body {
 }
 
 body {
-	@apply h-full scroll-smooth  text-black;
+	@apply font-light h-full scroll-smooth  text-black;
 }
 
 h1,
@@ -26,32 +26,32 @@ h6 {
 
 h1,
 .h1 {
-	@apply text-5xl  text-black lg:text-7xl;
+	@apply  font-light text-4xl  text-black lg:text-4xl;
 }
 
 h2,
 .h2 {
-	@apply text-5xl  text-black lg:text-6xl;
+	@apply  font-light text-3xl  text-black lg:text-3xl;
 }
 
 h3,
 .h3 {
-	@apply text-4xl  text-black lg:text-5xl;
+	@apply  font-light text-4xl   text-black lg:text-5xl;
 }
 
 h4,
 .h4 {
-	@apply text-3xl  text-black lg:text-4xl;
+	@apply font-light text-3xl  text-black lg:text-4xl;
 }
 
 h5,
 .h5 {
-	@apply text-2xl  text-black lg:text-3xl;
+	@apply font-light text-3xl  text-black lg:text-3xl;
 }
 
 h6,
 .h6 {
-	@apply text-xl  text-black lg:text-2xl;
+	@apply text-xl font-light text-black lg:text-2xl;
 }
 
 p {
@@ -86,11 +86,11 @@ p {
   }
 
   .bg-brand-brown\/20 {
-	background-color: rgba(7, 7, 6, 0.2); /* Same brown with 20% opacity */
+	background-color: rgba(7, 7, 6, 0.824); /* Same brown with 20% opacity */
   }
 
 .bg-brand-brown\/35 {
-	background-color: rgba(14, 10, 8, 0.35); /* Same brown with 35% opacity */
+	background-color: rgba(14, 10, 8, 0.789); /* Same brown with 35% opacity */
   }
 [x-cloak] {
 	display: none !important;

@@ -3,6 +3,21 @@
 import { Picture } from "astro:assets";
 import HeroImage from "../assets/images/HOM1.jpg"; // Update path to your image
 import GroupImage from "../assets/images/HOM2.jpg"; // Update path to your image
+
+import slideImage1 from "~/assets/images/HOM1.jpg";
+import slideImage2 from "~/assets/images/G4.jpg";
+import slideImage3 from "~/assets/images/G6.jpg";
+import ImageSlider from "./ImageSlider.astro";
+
+// Prepare the data in the format required by ImageSlider's Props
+const sliderData = [
+  { src: slideImage1, alt: "Alt text for the first beautiful slide image" },
+  { src: slideImage2, alt: "Alt text describing the second slide content" },
+  {
+    src: slideImage3,
+    alt: "Third slide showing an amazing landscape or object",
+  },
+];
 ---
 
 <div class="font-sans text-white overflow-hidden">
@@ -10,33 +25,14 @@ import GroupImage from "../assets/images/HOM2.jpg"; // Update path to your image
   <section class="relative w-full h-96 md:h-screen overflow-hidden">
     <!-- Image Hero avec composant Picture -->
     <div class="absolute inset-0 z-0">
-      <Picture
-        class:list={"w-full h-full object-cover"}
-        src={HeroImage}
-        widths={[400, 800, 1200, 1600, 2000]}
-        sizes="100vw"
-        height={600}
-        formats={["avif", "webp"]}
-        alt="Cuisine australienne moderne magnifiquement présentée"
-        loading={"eager"}
-        fetchpriority={"high"}
+      <ImageSlider
+        images={sliderData}
+        showOverlay={true}
+        overlayTitle=" Welcome to branché"
+        overlayButtonText="Order now"
+        overlayButtonHref="#"
+        imageHeightClass="h-full"
       />
-    </div>
-
-    <!-- Contenu superposé -->
-    <div
-      class="relative z-10 flex items-center justify-center h-full text-center px-8 bg-black/30"
-    >
-      <div>
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-8">
-          Welcome to branché
-        </h1>
-        <a
-          href="#"
-          class="inline-block py-3 px-8 border-2 border-white rounded-full text-white no-underline text-base transition-all duration-300 hover:bg-white/20"
-          >Order now</a
-        >
-      </div>
     </div>
   </section>
 
@@ -74,7 +70,7 @@ import GroupImage from "../assets/images/HOM2.jpg"; // Update path to your image
     </div>
 
     <a
-      href="#"
+      href="/private-events"
       class="inline-block py-4 px-6 bg-transparent border-2 border-white rounded-full text-white no-underline text-base mt-4 transition-all duration-300 hover:bg-white/20"
       >Large Group Booking Enquiry</a
     >

@@ -26,6 +26,7 @@ import reviewAuthors from "~/assets/images/review-authors.png";
 import Dessert from "~/assets/images/frenchtacos.jpg";
 import Mussels from "~/assets/images/mussels2.png";
 import RestaurantPromo from "../components/RestaurantPromo.astro";
+import ImageSlider from "~/components/ImageSlider.astro";
 ---
 
 <Layout title="Home" pageTitle="Home" description="Welcome to our restaurant!">
@@ -72,11 +73,13 @@ import RestaurantPromo from "../components/RestaurantPromo.astro";
     </Hero>
   </Section>
   -->
+
   <WideImage
     image={DecorativeImage}
     alt="Just an image"
     class:list={"aspect-video lg:aspect-[16/7]"}
   />
+  <!--
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose lg:order-2">
@@ -122,6 +125,7 @@ import RestaurantPromo from "../components/RestaurantPromo.astro";
       </div>
     </Hero>
   </Section>
+  -->
   <!--
   <Section class:list={"bg-white"}>
     <Hero>
@@ -254,6 +258,7 @@ import RestaurantPromo from "../components/RestaurantPromo.astro";
   </Section>
 -->
   <!-- Contact -->
+  <!--
   <Section class:list={"bg-white"}>
     <Hero>
       <div slot="hero-content-left" class="prose max-w-none">
@@ -288,5 +293,6 @@ import RestaurantPromo from "../components/RestaurantPromo.astro";
         />
       </div>
     </Hero>
-  </Section>
+  </Section> 
+  -->
 </Layout>

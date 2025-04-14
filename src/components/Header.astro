@@ -1,26 +1,30 @@
 ---
 // src/components/Header.astro
-import { menuMain } from "~/data/menus.js";
+import { menuMain } from "~/data/menus.js"; // Make sure this path is correct for your project
 
 const rmTrailingSlash = (path: string): string => {
+  // Removes trailing slash from a path unless it's the root '/'
   return path.endsWith("/") && path.length > 1
     ? path.slice(0, path.length - 1)
     : path;
 };
 
+// Get the current pathname and remove trailing slash for comparison
 const pathname = rmTrailingSlash(Astro.url.pathname);
 
-// Define base classes for reuse
-const baseLinkClasses = "transition text-base/6 font-semibold";
-// UPDATED: Hover is now black and bold
-const hoverClasses = "hover:text-black hover:font-bold";
-// Custom class names remain the same, but their definitions in <style> will change
-const activeClasses = "menu-item-active";
-const highlightedClasses = "menu-item-highlighted";
+// --- Define Base Classes for Reusability ---
 
-// Mobile specific base classes
-const mobileBaseLinkClasses = "block py-2 text-center font-semibold text-3xl";
-const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
+// Desktop Link Styles
+const baseLinkClasses = "transition text-base/6 font-semibold"; // Base style for desktop links
+const hoverClasses = "hover:text-black hover:font-bold"; // Hover state for desktop/mobile links
+
+// Custom Class Names (used in class:list and defined in <style>)
+const activeClasses = "menu-item-active"; // Applied to the current page link
+const highlightedClasses = "menu-item-highlighted"; // Special style for highlighted links
+
+// Mobile Link Styles
+const mobileBaseLinkClasses = "block py-2 text-center text-2xl"; // Base style for mobile parent links (smaller, not bold)
+const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto"; // Specific style for highlighted button in mobile
 ---
 
 <header
@@ -32,20 +36,20 @@ const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
     <nav class="flex items-center justify-between" aria-label="Global">
       {/* Logo */}
       <a href="/" class="-m-1.5 p-1.5 flex items-center">
-        <img src="/logo.png" alt="Branche Logo" class="h-15 w-auto" />
+        <img src="/logo.png" alt="Branche Logo" class="h-15 w-auto" /> {/* Ensure logo.png is in public/ */}
       </a>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile Menu Button (Hamburger Icon) */}
       <div class="flex lg:hidden">
         <button
           type="button"
-          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-brown"
-          {/* Kept text-brown as requested */}
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-brown" {/* text-brown defined in styles */}
           @click="open = true"
           aria-label="Open main menu"
           aria-expanded="false"
           :aria-expanded="open.toString()"
         >
+          <span class="sr-only">Open main menu</span>
           <svg
             class="size-8"
             fill="none"
@@ -70,21 +74,22 @@ const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
               {item.submenu ? (
                 // --- Desktop Dropdown ---
                 <div class="relative group">
+                  {/* Desktop Parent Link (with dropdown arrow) */}
                   <a
-                    href={item.url}
+                    href={item.url} // Parent link might still be navigable on desktop
                     class:list={[
                       baseLinkClasses,
-                      hoverClasses, // Apply updated hover classes
-                      "inline-flex items-center gap-x-1",
-                      item.highlighted && highlightedClasses,
-                      pathname === rmTrailingSlash(item.url) && activeClasses,
+                      hoverClasses,
+                      "inline-flex items-center gap-x-1", // Flex for text + arrow
+                      item.highlighted && highlightedClasses, // Apply highlighted style if applicable
+                      pathname === rmTrailingSlash(item.url) && activeClasses, // Apply active style if applicable
                     ]}
-                    aria-haspopup="true"
+                    aria-haspopup="true" // Indicate it has a popup menu
                   >
                     {item.name}
-                    {/* Dropdown Arrow - UPDATED hover color */}
+                    {/* Dropdown Arrow SVG */}
                     <svg
-                      class="h-5 w-5 text-gray-400 group-hover:text-black transition-colors"
+                      class="h-5 w-5 text-gray-400 group-hover:text-black transition-colors" // Arrow color changes on hover
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -96,17 +101,16 @@ const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
                       />
                     </svg>
                   </a>
-                  {/* Dropdown Panel */}
+                  {/* Desktop Dropdown Panel */}
                   <div class="absolute -left-8 top-full z-20 mt-3 w-screen max-w-[12rem] overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-gray-900/5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-out">
                     <div class="p-2">
                       {item.submenu.map((subItem) => (
                         <a
                           href={subItem.url}
                           class:list={[
-                            "block rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900 hover:bg-gray-100",
-                            // UPDATED: Active subitem style
-                            pathname === rmTrailingSlash(subItem.url) &&
-                              "bg-gray-100 text-black font-bold",
+                            "block rounded-md px-3 py-2 text-sm font-medium leading-6 text-gray-900 hover:bg-gray-100", // Subitem base style
+                            // Active subitem style (becomes bold, black text, light gray background)
+                            pathname === rmTrailingSlash(subItem.url) && "bg-gray-100 text-black font-bold",
                           ]}
                         >
                           {subItem.name}
@@ -116,20 +120,16 @@ const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
                   </div>
                 </div>
               ) : (
-                // --- Regular Desktop Link ---
+                // --- Regular Desktop Link (No Submenu) ---
                 <a
                   href={item.url}
-                  target={item.url.startsWith("http") ? "_blank" : "_self"}
-                  rel={
-                    item.url.startsWith("http")
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
+                  target={item.url.startsWith("http") ? "_blank" : "_self"} // Open external links in new tab
+                  rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined} // Security for external links
                   class:list={[
                     baseLinkClasses,
-                    hoverClasses, // Apply updated hover classes
-                    item.highlighted && highlightedClasses,
-                    pathname === rmTrailingSlash(item.url) && activeClasses,
+                    hoverClasses,
+                    item.highlighted && highlightedClasses, // Apply highlighted style if applicable
+                    pathname === rmTrailingSlash(item.url) && activeClasses, // Apply active style if applicable
                   ]}
                 >
                   {item.name}
@@ -141,27 +141,28 @@ const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
       </div>
     </nav>
 
-    {/* Mobile Menu Panel */}
+    {/* Mobile Menu Panel (Flyout) */}
     <div
-      class="lg:hidden"
-      x-ref="dialog"
-      x-show="open"
-      x-cloak
-      aria-modal="true"
+      class="lg:hidden"    {/* Only show on small screens */}
+      x-ref="dialog"      {/* Reference for Alpine */}
+      x-show="open"       {/* Controlled by Alpine 'open' state */}
+      x-cloak             {/* Hide until Alpine initializes */}
+      aria-modal="true"   {/* Accessibility: it's a modal dialog */}
       role="dialog"
     >
-      {/* Overlay */}
+      {/* Mobile Menu Overlay */}
       <div
         x-show="open"
-        x-transition.opacity.duration.300ms
-        class="fixed inset-0 z-40 bg-black/30"
-        @click="open = false"
+        x-transition.opacity.duration.300ms {/* Fade transition */}
+        class="fixed inset-0 z-40 bg-black/30" {/* Semi-transparent background */}
+        @click="open = false" {/* Close menu when clicking overlay */}
+        aria-hidden="true"
       >
       </div>
 
-      {/* Panel Content */}
+      {/* Mobile Menu Panel Content */}
       <div
-        class="fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto bg-white px-8 py-6"
+        class="fixed inset-y-0 right-0 z-50 w-full max-w-sm overflow-y-auto bg-white px-8 py-6" {/* Panel styles */}
         x-show="open"
         x-transition:enter="transition ease-in-out duration-300 transform"
         x-transition:enter-start="translate-x-full"
@@ -169,24 +170,22 @@ const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
         x-transition:leave="transition ease-in-out duration-300 transform"
         x-transition:leave-start="translate-x-0"
         x-transition:leave-end="translate-x-full"
-        x-cloak
+        x-cloak {/* Hide until Alpine initializes and transition starts */}
       >
-        {/* Mobile Header inside panel */}
+        {/* Header inside Mobile Panel (Logo + Close Button) */}
         <div class="flex items-center justify-between">
-          <a
-            href="/"
-            class="-m-1.5 p-1.5 flex items-center"
-            @click="open = false"
-          >
+          {/* Logo inside panel */}
+          <a href="/" class="-m-1.5 p-1.5 flex items-center" @click="open = false"> {/* Close menu on logo click */}
             <img src="/logo.png" alt="Branche Logo" class="h-15 w-auto" />
           </a>
+          {/* Close Button (X icon) */}
           <button
             type="button"
-            class="-m-2.5 p-2.5 text-brand-red"
-            {/* Kept text-brand-red */}
-            @click="open = false"
+            class="-m-2.5 p-2.5 text-brand-red" {/* text-brand-red defined in styles */}
+            @click="open = false" {/* Close menu on button click */}
             aria-label="Close menu"
           >
+            <span class="sr-only">Close menu</span>
             <svg
               class="size-8"
               fill="none"
@@ -205,43 +204,97 @@ const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
 
         {/* Mobile Menu Links */}
         <div class="mt-16 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
-            <div class="space-y-4 py-6">
+          <div class="-my-6 divide-y divide-gray-500/10"> {/* Divider between link groups */}
+            <div class="space-y-2 py-6"> {/* Spacing between menu items */}
               {
                 menuMain.map((item) => (
-                  <div key={item.name}>
-                    {/* --- Parent Mobile Link --- */}
-                    <a
-                      href={item.url}
-                      target={item.url.startsWith("http") ? "_blank" : "_self"}
-                      rel={
-                        item.url.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      @click={!item.submenu && "open = false"}
-                      class:list={[
-                        mobileBaseLinkClasses,
-                        item.highlighted && highlightedClasses,
-                        item.highlighted && mobileHighlightedClasses,
-                        pathname === rmTrailingSlash(item.url) && activeClasses, // Uses updated active class definition
-                      ]}
-                    >
-                      {item.name}
-                    </a>
+                  // Each item gets its own Alpine scope for submenu state
+                  <div x-data="{ submenuOpen: false }" key={item.name}>
 
-                    {/* --- Submenu Mobile Links (if exist) --- */}
+                    {/* Container for Parent Link and Toggle Arrow */}
+                    <div class="flex items-center justify-center relative"> {/* Use relative for positioning arrow */}
+
+                      {/* --- Parent Mobile Link --- */}
+                      <a
+                        href={item.url}
+                        target={item.url.startsWith("http") ? "_blank" : "_self"}
+                        rel={item.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                        // --- IMPORTANT CLICK LOGIC ---
+                        @click={
+                          item.submenu
+                            ? // IF item HAS submenu: Prevent link navigation, toggle submenu state
+                              `$event.preventDefault(); submenuOpen = !submenuOpen`
+                            : // ELSE (no submenu): Close the entire mobile panel (navigation happens naturally)
+                              `open = false`
+                        }
+                        class:list={[
+                          mobileBaseLinkClasses, // Base mobile style (text-2xl, not bold)
+                          "flex-grow text-center", // Allow link to take space, center text
+                          item.highlighted && highlightedClasses, // Apply general highlighted style
+                          item.highlighted && mobileHighlightedClasses, // Apply mobile-specific highlighted padding/size
+                          // Apply active style ONLY if it's the current page AND it DOESN'T have a submenu
+                          // (Parent items with submenus usually aren't considered 'active' themselves)
+                          pathname === rmTrailingSlash(item.url) && !item.submenu && activeClasses,
+                           // Add padding to the right if there's a submenu, to make space for the arrow
+                          item.submenu && "pr-8",
+                        ]}
+                        aria-controls={item.submenu ? `submenu-${item.name.toLowerCase().replace(/\s+/g, '-')}` : undefined}
+                        aria-expanded={item.submenu ? 'submenuOpen' : undefined}
+                      >
+                        {item.name}
+                      </a>
+
+                      {/* --- Submenu Toggle Arrow (only if submenu exists) --- */}
+                      {item.submenu && (
+                        <button
+                          type="button"
+                          @click="submenuOpen = !submenuOpen" // Arrow click ONLY toggles submenu
+                          aria-label={`Toggle submenu for ${item.name}`}
+                          aria-expanded="submenuOpen"
+                          aria-controls={`submenu-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                          // Position arrow within the parent link's padding area
+                          class="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-gray-600 hover:text-black"
+                        >
+                           <span class="sr-only">Toggle submenu</span>
+                           {/* Arrow Icon - Rotates when open */}
+                           <svg
+                            class="h-5 w-5 transition-transform duration-200 ease-in-out"
+                            :class="{'rotate-180': submenuOpen}" // Alpine rotates based on state
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                          </svg>
+                        </button>
+                      )}
+                    </div> {/* End Flex container for link + arrow */}
+
+
+                    {/* --- Submenu Mobile Links (Conditionally Visible) --- */}
                     {item.submenu && (
-                      <div class="mt-2 space-y-2 pl-6">
+                      <div
+                        id={`submenu-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                        x-show="submenuOpen" // Controlled by Alpine state
+                        // Smooth transition for opening/closing
+                        x-transition:enter="transition ease-out duration-200"
+                        x-transition:enter-start="opacity-0 scale-95"
+                        x-transition:enter-end="opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-150"
+                        x-transition:leave-start="opacity-100 scale-100"
+                        x-transition:leave-end="opacity-0 scale-95"
+                        class="mt-2 space-y-2 pl-6 overflow-hidden" // Indent submenu items
+                        x-cloak // Hide until Alpine is ready
+                      >
                         {item.submenu.map((subItem) => (
                           <a
                             href={subItem.url}
-                            @click="open = false"
+                            @click="open = false" // Click on subitem closes the ENTIRE mobile menu panel
                             class:list={[
-                              "block text-center text-xl font-medium py-1",
-                              "hover:text-black hover:font-bold", // UPDATED hover style
-                              pathname === rmTrailingSlash(subItem.url) &&
-                                activeClasses, // Uses updated active class definition
+                              "block text-center text-xl font-medium py-1", // Subitem style (can be adjusted)
+                              hoverClasses, // Use same hover effect (black, bold)
+                              // Active subitem style (uses activeClasses, styled via CSS below)
+                              pathname === rmTrailingSlash(subItem.url) && activeClasses,
                             ]}
                           >
                             {subItem.name}
@@ -249,73 +302,68 @@ const mobileHighlightedClasses = "!px-8 !py-2 w-max mx-auto";
                         ))}
                       </div>
                     )}
-                  </div>
+                  </div> // End x-data scope div for the menu item
                 ))
               }
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </div> {/* End Mobile Panel Content */}
+    </div> {/* End Mobile Menu Panel */}
+  </div> {/* End Container */}
 
-  {/* Add Styles for Custom Classes */}
+  {/* --- Styles Section --- */}
   <style>
+    /* Highlighted Menu Item Style (Black Button) */
     .menu-item-highlighted {
-      /* UPDATED: Highlighted style is now black */
-      background-color: black; /* Black background */
-      color: white; /* White text for contrast */
-      padding: 0.5rem 1.5rem;
-      border-radius: 9999px; /* full */
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: black;
+      color: white !important; /* Use !important if needed to override base link color */
+      padding: 0.5rem 1.5rem; /* Adjust padding as needed */
+      border-radius: 9999px; /* Full pill shape */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
       font-weight: 600; /* Semibold */
     }
     .menu-item-highlighted:hover {
       background-color: #333; /* Slightly lighter black on hover */
-      color: white;
+      color: white !important;
     }
 
+    /* Active Menu Item Style (Black & Bold Text) */
     .menu-item-active {
-      /* UPDATED: Active style is now black and bold */
       color: black;
-      font-weight: 700; /* Bold */
+      font-weight: 700 !important; /* Bold, use !important to ensure override */
     }
 
-    /* Minor adjustment for active item in desktop dropdown to match */
-    .group-hover\:visible a.bg-gray-100.text-black.font-bold {
-      /* Style is now applied directly via class:list, ensure consistency if needed */
-      /* color: black; */ /* Already set */
-      /* font-weight: 700; */ /* Already set */
+    /* --- Mobile-Specific Active Item Style Override --- */
+    /* Target active items specifically within the mobile panel */
+    /* and make them NOT bold (normal weight) */
+    .lg\:hidden[role="dialog"] .menu-item-active {
+        font-weight: 400 !important; /* Normal weight (override base active bold) */
+        /* color: black; /* Color is already black from base .menu-item-active */
     }
-
-    /* Mobile specific active style inherits from .menu-item-active */
-    /* .lg\:hidden .menu-item-active { */
-    /* color: black; */ /* Inherited */
-    /* font-weight: 700; */ /* Inherited */
+    /* Optional: Style active sub-items differently if needed */
+    /* .lg\:hidden[role="dialog"] [x-show] .menu-item-active { */
+       /* font-weight: 600 !important; /* Example: Make active sub-items semibold */
     /* } */
 
-    /* Fix for logo height if 'h-15' is not a standard Tailwind class */
+
+    /* Utility Classes (Define if not using Tailwind or ensure they exist) */
     .h-15 {
-      height: 3.75rem; /* 60px */
+      height: 3.75rem; /* 60px - Adjust if needed */
     }
-
-    /* Ensure text-brown is defined if not in Tailwind config */
     .text-brown {
-      /* Use your actual brown color here if needed */
-      /* Example: color: #A0522D; */
-      color: black; /* Assuming you want the hamburger icon black now too */
+      /* Define your brown color if not using Tailwind, or map to a color */
+      /* color: #A0522D; /* Example SaddleBrown */
+      color: black; /* Or set to black if preferred for the hamburger */
     }
-    /* Ensure text-brand-red is defined */
     .text-brand-red {
-      color: #dc2626; /* Example: Tailwind red-600 */
-      /* Or use your specific red */
+      /* Define your brand red color */
+      color: #dc2626; /* Example: Tailwind's red-600 */
     }
 
-    /* --- Removed brand-green CSS variable definition --- */
-
-    /* --- Inline hover classes handle the hover state directly --- */
-    /* .hover\:text-brand-green:hover { ... } */
-
-    /* .menu-item-active rule now defines the active color */
+    /* Alpine.js Helper */
+    [x-cloak] {
+      display: none !important; /* Hide elements until Alpine takes control */
+    }
   </style>
 </header>
