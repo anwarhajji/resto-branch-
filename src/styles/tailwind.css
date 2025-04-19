@@ -12,7 +12,7 @@ body {
 }
 
 body {
-	@apply font-light h-full scroll-smooth  text-black;
+	@apply font-thin text-sm h-full scroll-smooth  text-black;
 }
 
 h1,
@@ -29,9 +29,12 @@ h1,
 	@apply  font-light text-4xl  text-black lg:text-4xl;
 }
 
+.p {
+	@apply font-thin text-sm text-black;
+}
 h2,
 .h2 {
-	@apply  font-light text-3xl  text-black lg:text-3xl;
+	@apply  font-extralight text-3xl  text-black lg:text-3xl;
 }
 
 h3,
