@@ -6,8 +6,19 @@ export const menuMain = [
     },
     {
         name: "Menu",
-        url: "/menu",
+        url: "#",
         highlighted: false,
+        submenu: [
+            {
+                name: "Leyton Menu", // Name of the first location
+                url: "/Leyton-menu", // URL for the first location page
+            },
+            {
+                name: "tooting bec Menu", // Name of the second location
+                url: "/tooting-menu", // URL for the second location page
+            },
+            // You can add more location objects here if needed in the future
+        ]
     },
     {
         name: "About Us",
@@ -31,8 +42,8 @@ export const menuMain = [
                 url: "/Leyton", // URL for the first location page
             },
             {
-                name: "Location 2", // Name of the second location
-                url: "/location2", // URL for the second location page
+                name: "tooting bec", // Name of the second location
+                url: "/tooting-bec", // URL for the second location page
             },
             // You can add more location objects here if needed in the future
         ]
