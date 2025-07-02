@@ -61,10 +61,14 @@ const restaurantPhoneLink = "tel:+442036914785";
         <section>
           <h2 class="text-base font-semibold mb-3">Private Hire</h2>
           <p class="mb-5">
-            Interested in hosting a party or special event with us? Please get
-            in touch via the enquiry button below or email us for details.
+            Interested in hosting a party or special event with us? please
+            contact us directly via email at contact@branchelondon.co.uk for
+            details.
           </p>
-          <ActionButton text="Private Hire Enquiry" href="/private-events" />
+          <ActionButton
+            text="contact@branchelondon.co.uk"
+            href={`mailto:${contactEmail}`}
+          />
         </section>
       </div>
 
@@ -121,7 +125,10 @@ const restaurantPhoneLink = "tel:+442036914785";
             </p>
           </div>
           <div class="mt-6">
-            <ActionButton text="Private Hire Enquiry" href="/private-events" />
+            <ActionButton
+              text="contact@branchelondon.co.uk"
+              href={`mailto:${contactEmail}`}
+            />
           </div>
         </section>
       </div>
